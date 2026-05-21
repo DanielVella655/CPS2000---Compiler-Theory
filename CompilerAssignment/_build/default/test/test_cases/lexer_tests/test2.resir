@@ -1,0 +1,4 @@
+extern type void ptr
+locals entry to cast un bin addr_of member_ptr load store call jump cjump
+bool i64 u32 f64 true false null
+< > :: -> ,

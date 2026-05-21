@@ -1,4 +1,54 @@
 (lang dune 3.22)
 (name CompilerAssignment)
-(sections (lib .) (bin ../../bin))
-(files (lib (META dune-package opam)) (bin (CompilerAssignment)))
+(sections (lib .) (libexec .) (bin ../../bin))
+(files
+ (lib
+  (CompilerAssignment.a
+   CompilerAssignment.cma
+   CompilerAssignment.cmxa
+   META
+   compilerAssignment.cmi
+   compilerAssignment.cmt
+   compilerAssignment.cmx
+   compilerAssignment.ml
+   compilerAssignment__Lexer.cmi
+   compilerAssignment__Lexer.cmt
+   compilerAssignment__Lexer.cmx
+   compilerAssignment__Types.cmi
+   compilerAssignment__Types.cmt
+   compilerAssignment__Types.cmx
+   dune-package
+   lexer.ml
+   opam
+   types.ml))
+ (libexec (CompilerAssignment.cmxs))
+ (bin (CompilerAssignment)))
+(library
+ (name CompilerAssignment)
+ (kind normal)
+ (archives (byte CompilerAssignment.cma) (native CompilerAssignment.cmxa))
+ (plugins (byte CompilerAssignment.cma) (native CompilerAssignment.cmxs))
+ (native_archives CompilerAssignment.a)
+ (main_module_name CompilerAssignment)
+ (modes byte native)
+ (modules
+  (wrapped
+   (group
+    (alias
+     (obj_name compilerAssignment)
+     (visibility public)
+     (kind alias)
+     (source
+      (path CompilerAssignment)
+      (impl (path compilerAssignment.ml-gen))))
+    (name CompilerAssignment)
+    (modules
+     (module
+      (obj_name compilerAssignment__Lexer)
+      (visibility public)
+      (source (path Lexer) (impl (path lexer.ml))))
+     (module
+      (obj_name compilerAssignment__Types)
+      (visibility public)
+      (source (path Types) (impl (path types.ml))))))
+   (wrapped true))))

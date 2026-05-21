@@ -1,0 +1,6 @@
+description = ""
+requires = ""
+archive(byte) = "CompilerAssignment.cma"
+archive(native) = "CompilerAssignment.cmxa"
+plugin(byte) = "CompilerAssignment.cma"
+plugin(native) = "CompilerAssignment.cmxs"

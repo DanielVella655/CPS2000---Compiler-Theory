@@ -1,0 +1,7 @@
+function i32 math_diff() {
+  bb0:
+    %a = const +32;
+    %b = const -10;
+    %res = const 3.14;
+    return %a;
+}

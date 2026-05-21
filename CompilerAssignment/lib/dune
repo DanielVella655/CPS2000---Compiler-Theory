@@ -1,2 +1,4 @@
 (library
- (name CompilerAssignment))
+ (name CompilerAssignment)
+ (public_name CompilerAssignment)
+ (modules lexer types))

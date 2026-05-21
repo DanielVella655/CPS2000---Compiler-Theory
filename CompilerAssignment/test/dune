@@ -1,7 +1,4 @@
 (test
- (name test_CompilerAssignment)
- (libraries CompilerAssignment))
-
- (alias 
-  (name runtest)
-  (action (run ./test_CompilerAssignment.exe)))
+ (name lexer_test)
+ (libraries CompilerAssignment)
+ (deps (glob_files_rec test_cases/lexer_tests/*)))
