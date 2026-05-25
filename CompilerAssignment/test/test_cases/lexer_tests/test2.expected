@@ -1,30 +1,88 @@
-Extern
-Type
-Void
-Ptr
-Locals
-Entry
-To
-Cast
-Un
-Bin
-Addr_Of
-Member_Ptr
-Load
-Store
-Call
-Jump
-Cjump
-Bool
-I64
-U32
-F64
-True
-False
-Null
-LAngle
-RAngle
-PathSep
-Arrow
-Comma
-EOF
+(Extern, 1, 1)
+(Type, 1, 8)
+(Ident(Custom), 1, 13)
+(PathSep, 1, 19)
+(Ident(Struct), 1, 21)
+(PathSep, 1, 27)
+(Ident(Point), 1, 29)
+(LCurly, 1, 35)
+(Ident(x), 2, 5)
+(Colon, 2, 7)
+(I32, 2, 9)
+(Semicolon, 2, 12)
+(Ident(y), 3, 5)
+(Colon, 3, 7)
+(I32, 3, 9)
+(Semicolon, 3, 12)
+(RCurly, 4, 1)
+(Function, 5, 1)
+(Ident(Geom), 5, 10)
+(PathSep, 5, 14)
+(Ident(point_x), 5, 16)
+(LBracket, 5, 23)
+(Local(%p), 5, 24)
+(Colon, 5, 26)
+(Ptr, 5, 28)
+(LAngle, 5, 31)
+(Ident(Custom), 5, 32)
+(PathSep, 5, 38)
+(Ident(Struct), 5, 40)
+(PathSep, 5, 46)
+(Ident(Point), 5, 48)
+(RAngle, 5, 53)
+(RBracket, 5, 54)
+(Arrow, 5, 56)
+(I32, 5, 59)
+(LCurly, 5, 63)
+(Locals, 6, 5)
+(LCurly, 6, 12)
+(Local(%fp), 7, 9)
+(Colon, 7, 13)
+(Ptr, 7, 15)
+(LAngle, 7, 18)
+(I32, 7, 19)
+(RAngle, 7, 22)
+(Semicolon, 7, 23)
+(Local(%v), 8, 9)
+(Colon, 8, 12)
+(I32, 8, 14)
+(Semicolon, 8, 17)
+(Local(%dx), 9, 9)
+(Colon, 9, 13)
+(I32, 9, 15)
+(Semicolon, 9, 18)
+(RCurly, 10, 5)
+(Entry, 11, 5)
+(Label(bb0), 11, 11)
+(Semicolon, 11, 14)
+(Label(bb0), 13, 5)
+(Colon, 13, 8)
+(Local(%fp), 14, 9)
+(Equal, 14, 13)
+(Member_Ptr, 14, 15)
+(Local(%p), 14, 26)
+(Comma, 14, 28)
+(Ident(x), 14, 30)
+(Semicolon, 14, 31)
+(Local(%v), 15, 9)
+(Equal, 15, 12)
+(Load, 15, 14)
+(Local(%fp), 15, 19)
+(Semicolon, 15, 22)
+(Local(%dx), 16, 9)
+(Equal, 16, 13)
+(Call, 16, 15)
+(Ident(Math), 16, 20)
+(PathSep, 16, 24)
+(Ident(abs_diff), 16, 26)
+(LBracket, 16, 34)
+(Local(%a), 16, 35)
+(Comma, 16, 37)
+(Local(%b), 16, 39)
+(RBracket, 16, 41)
+(Semicolon, 16, 42)
+(Return, 17, 9)
+(Local(%v), 17, 16)
+(Semicolon, 17, 18)
+(RCurly, 18, 1)
+(EOF, 18, 2)

@@ -1,0 +1,10 @@
+function main() -> void {
+  locals {
+    %x : i32;
+  }
+  entry bb0;
+
+  bb0:
+    %x = const 42
+    return;
+}

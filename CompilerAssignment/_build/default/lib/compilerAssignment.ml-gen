@@ -3,5 +3,5 @@
 (** @canonical CompilerAssignment.Lexer *)
 module Lexer = CompilerAssignment__Lexer
 
-(** @canonical CompilerAssignment.Types *)
-module Types = CompilerAssignment__Types
+(** @canonical CompilerAssignment.Parser *)
+module Parser = CompilerAssignment__Parser

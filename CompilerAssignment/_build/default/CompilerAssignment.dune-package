@@ -14,13 +14,13 @@
    compilerAssignment__Lexer.cmi
    compilerAssignment__Lexer.cmt
    compilerAssignment__Lexer.cmx
-   compilerAssignment__Types.cmi
-   compilerAssignment__Types.cmt
-   compilerAssignment__Types.cmx
+   compilerAssignment__Parser.cmi
+   compilerAssignment__Parser.cmt
+   compilerAssignment__Parser.cmx
    dune-package
    lexer.ml
    opam
-   types.ml))
+   parser.ml))
  (libexec (CompilerAssignment.cmxs))
  (bin (CompilerAssignment)))
 (library
@@ -48,7 +48,7 @@
       (visibility public)
       (source (path Lexer) (impl (path lexer.ml))))
      (module
-      (obj_name compilerAssignment__Types)
+      (obj_name compilerAssignment__Parser)
       (visibility public)
-      (source (path Types) (impl (path types.ml))))))
+      (source (path Parser) (impl (path parser.ml))))))
    (wrapped true))))

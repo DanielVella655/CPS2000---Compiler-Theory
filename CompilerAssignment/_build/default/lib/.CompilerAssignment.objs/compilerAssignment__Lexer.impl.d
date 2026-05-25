@@ -1,1 +1,1 @@
-lib/lexer.ml: Array List Printf String Types
+lib/lexer.ml: Array List Printf String

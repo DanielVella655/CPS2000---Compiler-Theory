@@ -1,4 +1,18 @@
-extern type void ptr
-locals entry to cast un bin addr_of member_ptr load store call jump cjump
-bool i64 u32 f64 true false null
-< > :: -> ,
+extern type Custom::Struct::Point {
+    x : i32;
+    y : i32;
+}
+function Geom::point_x(%p: ptr<Custom::Struct::Point>) -> i32 {
+    locals {
+        %fp : ptr<i32>;
+        %v : i32;
+        %dx : i32;
+    }
+    entry bb0;
+
+    bb0:
+        %fp = member_ptr %p, x;
+        %v = load %fp;
+        %dx = call Math::abs_diff(%a, %b);
+        return %v;
+}

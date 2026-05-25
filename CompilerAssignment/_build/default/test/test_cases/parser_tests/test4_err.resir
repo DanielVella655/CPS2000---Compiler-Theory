@@ -1,0 +1,10 @@
+function math_error(%a : i32, %b : i32) -> i32 {
+  locals {
+    %res : i32;
+  }
+  entry start;
+
+  start:
+    %res = bin add %a %b;
+    return %res;
+}

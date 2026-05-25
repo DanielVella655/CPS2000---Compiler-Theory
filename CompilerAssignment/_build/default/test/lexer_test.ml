@@ -1,5 +1,4 @@
 open CompilerAssignment
-open Types
 open Lexer
 
 (* resolving path to avoid errors between dune exec and dune test*)
@@ -26,30 +25,6 @@ let print_file filename content =
   let ch = open_out safe_path in
   output_string ch content;
   close_out ch
-
-let string_of_tokens token =
-  match token with 
-  | (text, _, _) -> (
-    match text with
-    | Extern -> "Extern" | Type -> "Type" | Function -> "Function" | Locals -> "Locals" 
-    | Void -> "Void" | Entry -> "Entry" | To -> "To" | Const -> "Const" | Cast -> "Cast" 
-    | Un -> "Un" | Bin -> "Bin" | Addr_Of -> "Addr_Of" | Member_Ptr -> "Member_Ptr" 
-    | Load -> "Load" | Store -> "Store" | Call -> "Call" | Jump -> "Jump" | Cjump -> "Cjump" 
-    | Return -> "Return" | Bool -> "Bool" | I32 -> "I32" | I64 -> "I64" | U32 -> "U32" | F64 -> "F64" | Ptr -> "Ptr" 
-    | Ident s -> "Ident(" ^ s ^ ")" 
-    | Local s -> "Local(" ^ s ^ ")" 
-    | Label s -> "Label(" ^ s ^ ")" 
-    | IntLit i -> "IntLit(" ^ string_of_int i ^ ")" 
-    | FloatLit f -> "FloatLit(" ^ string_of_float f ^ ")" 
-    | True -> "True" | False -> "False" | Null -> "Null" 
-    | Neg -> "Neg" | Not -> "Not" | Add -> "Add" | Sub -> "Sub" | Mul -> "Mul" | Div -> "Div" | Mod -> "Mod" 
-    | Eq -> "Eq" | Ne -> "Ne" | Lt -> "Lt" | Le -> "Le" | Gt -> "Gt" | Ge -> "Ge" 
-    | And -> "And" | Or -> "Or" 
-    | LBracket -> "LBracket" | RBracket -> "RBracket" | LCurly -> "LCurly" | RCurly -> "RCurly" 
-    | LAngle -> "LAngle" | RAngle -> "RAngle" | Colon -> "Colon" | Semicolon -> "Semicolon" 
-    | PathSep -> "PathSep" | Arrow -> "Arrow" | Equal -> "Equal" | Comma -> "Comma" 
-    | EOF -> "EOF"
-  )
 
 let run_test_case resir_path expected_path =
   let input_code = read_file resir_path in
@@ -86,9 +61,9 @@ let run_error_test_case resir_path expected_path =
     )
 
 let () =
-  print_endline "Running ResIR Compiler Test Suite...";
+  print_endline "Running ResIR Lexer Test Suite...";
   
   for x = 1 to 2 do (run_test_case ("test/test_cases/lexer_tests/test" ^ string_of_int x ^ ".resir") ("test/test_cases/lexer_tests/test" ^ string_of_int x ^ ".expected")) done;
   for x = 3 to 5 do (run_error_test_case ("test/test_cases/lexer_tests/test" ^ string_of_int x ^ "_err.resir") ("test/test_cases/lexer_tests/test" ^ string_of_int x ^ "_err.expected")) done;
   
-  print_endline "All tests passed successfully!"
+  print_endline "All tests passed successfully!\n"

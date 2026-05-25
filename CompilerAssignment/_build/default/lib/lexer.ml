@@ -1,4 +1,89 @@
-open Types
+type token = 
+(* Structure and Declaration *)
+Extern | Type | Function | Locals | Void | Entry | To |
+(* Instruction *)
+Const | Cast | Un | Bin | Addr_Of | Member_Ptr | Load | Store | Call | Jump | Cjump | Return |
+(* Types *)
+Bool | I32 | I64 | U32 | F64 | Ptr | 
+(* Labels and Identifiers *)
+Ident of string | 
+Local of string | (* ex: %a *)
+Label of string |
+(* Literals *)
+IntLit of int | FloatLit of float | True | False | Null |
+(* Operators *)
+Neg | Not |
+Add | Sub | Mul | Div | Mod | 
+Eq | Ne | Lt | Le | Gt | Ge | 
+And | Or |
+(* Punctuation *)
+LBracket | RBracket | LCurly | RCurly | LAngle | RAngle | Colon | Semicolon | PathSep | Arrow | Equal | Comma | (* where PathSep is :: *)
+EOF
+
+(* helper function for printing errors *)
+let string_of_tokens token =
+  match token with 
+  | (Extern, line, col)     -> "(Extern, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Type, line, col)       -> "(Type, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Function, line, col)   -> "(Function, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Locals, line, col)     -> "(Locals, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
+  | (Void, line, col)       -> "(Void, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Entry, line, col)      -> "(Entry, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (To, line, col)         -> "(To, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Const, line, col)      -> "(Const, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Cast, line, col)       -> "(Cast, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
+  | (Un, line, col)         -> "(Un, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Bin, line, col)        -> "(Bin, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Addr_Of, line, col)    -> "(Addr_Of, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Member_Ptr, line, col) -> "(Member_Ptr, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
+  | (Load, line, col)       -> "(Load, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Store, line, col)      -> "(Store, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Call, line, col)       -> "(Call, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Jump, line, col)       -> "(Jump, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Cjump, line, col)      -> "(Cjump, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
+  | (Return, line, col)     -> "(Return, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Bool, line, col)       -> "(Bool, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (I32, line, col)        -> "(I32, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (I64, line, col)        -> "(I64, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (U32, line, col)        -> "(U32, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (F64, line, col)        -> "(F64, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Ptr, line, col)        -> "(Ptr, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
+  | (Ident s, line, col)    -> "(Ident(" ^ s ^ "), " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
+  | (Local s, line, col)    -> "(Local(" ^ s ^ "), " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
+  | (Label s, line, col)    -> "(Label(" ^ s ^ "), " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
+  | (IntLit i, line, col)   -> "(IntLit(" ^ string_of_int i ^ "), " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
+  | (FloatLit f, line, col) -> "(FloatLit(" ^ string_of_float f ^ "), " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
+  | (True, line, col)       -> "(True, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (False, line, col)      -> "(False, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Null, line, col)       -> "(Null, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
+  | (Neg, line, col)        -> "(Neg, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Not, line, col)        -> "(Not, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Add, line, col)        -> "(Add, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Sub, line, col)        -> "(Sub, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Mul, line, col)        -> "(Mul, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Div, line, col)        -> "(Div, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Mod, line, col)        -> "(Mod, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
+  | (Eq, line, col)         -> "(Eq, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Ne, line, col)         -> "(Ne, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Lt, line, col)         -> "(Lt, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Le, line, col)         -> "(Le, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Gt, line, col)         -> "(Gt, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Ge, line, col)         -> "(Ge, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
+  | (And, line, col)        -> "(And, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Or, line, col)         -> "(Or, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
+  | (LBracket, line, col)   -> "(LBracket, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (RBracket, line, col)   -> "(RBracket, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (LCurly, line, col)     -> "(LCurly, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (RCurly, line, col)     -> "(RCurly, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
+  | (LAngle, line, col)     -> "(LAngle, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (RAngle, line, col)     -> "(RAngle, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Colon, line, col)      -> "(Colon, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Semicolon, line, col)  -> "(Semicolon, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
+  | (PathSep, line, col)    -> "(PathSep, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Arrow, line, col)      -> "(Arrow, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Equal, line, col)      -> "(Equal, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
+  | (Comma, line, col)      -> "(Comma, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
+  | (EOF, line, col)        -> "(EOF, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
 
 let map_keywords s = 
     match s with
@@ -8,6 +93,9 @@ let map_keywords s =
     | "bool" -> Bool | "i32" -> I32 | "i64" -> I64 | "u32" -> U32 | "f64" -> F64 | "ptr" -> Ptr
     | "true" -> True | "false" -> False | "null" -> Null 
     | _ -> Ident s 
+
+type chars = 
+| Alpha | Digit | Percent | Colon | Plus | Minus | Equal | Greater | Period | Punct | Space | Other
 
 let map_char c = 
     match c with 
@@ -23,6 +111,10 @@ let map_char c =
     | ';' | ',' | '(' | ')' | '{' | '}' | '<' -> Punct
     | ' ' | '\t' | '\n' | '\r' -> Space 
     | _ -> Other
+
+type states = 
+| StartSt | IdentSt | IntLitSt | FloatLitSt | PercentSt | LocalSt | ColonSt | PathSepSt | PlusSt | MinusSt 
+| ArrowSt | EqualSt | GreaterSt | PunctSt | ErrorSt
 
 let transition_table = [|
     (* Alpha  | Digit   |   Percent  | Colon  |   Plus  |  Minus  | Equal  | Greater  | Period |    Punct  | Space  | Other *)
@@ -105,6 +197,12 @@ let ch_int char =
     | Alpha -> 0 | Digit -> 1   | Percent -> 2 | Colon -> 3 | Plus -> 4   | Minus -> 5 
     | Equal -> 6 | Greater -> 7 | Period -> 8  | Punct -> 9 | Space -> 10 | Other -> 11
 
+type char_pos = {
+  mutable index  : int;
+  mutable line   : int;
+  mutable col    : int;
+}
+
 let next_token input pos = 
     let len = String.length input in
         (* update line and col counters if \n is found *)
@@ -118,7 +216,7 @@ let next_token input pos =
             pos.index <- pos.index + 1
         done;
 
-        if pos.index >= len then EOF
+        if pos.index >= len then (EOF, pos.line, pos.col)
         else 
             let start_pos = pos.index in
                 (* fix line and col at beginning of token *)
@@ -144,16 +242,25 @@ let next_token input pos =
 
                 in 
                     let (final_state, end_pos) = traverse_state StartSt start_pos in
+                    for i = start_pos to end_pos - 1 do
+                        if input.[i] = '\n' then (
+                            pos.line <- pos.line + 1;
+                            pos.col <- 1
+                        ) else (
+                            pos.col <- pos.col + 1
+                        ) done;
+
                         let lexeme = String.sub input start_pos (end_pos - start_pos) in
                             pos.index <- end_pos;
-                            map_states final_state lexeme token_line token_col
+                            (map_states final_state lexeme token_line token_col, token_line, token_col)
 
 let tokenize source_code = 
     let pos = {index = 0; line = 1; col = 1} in (* mutable pointers to track position *)
         let rec collect_tokens acc = 
-            let new_token = next_token source_code pos in
+            (* unpack tuple *)
+            let (new_token, token_line, token_col) = next_token source_code pos in
                 match new_token with
-                | EOF -> List.rev ((EOF, pos.line, pos.col) :: acc) (* reversing list so tokens represent the source code in the correct order *)
-                | _ -> collect_tokens ((new_token, pos.line, pos.col) :: acc)
+                | EOF -> List.rev ((EOF, token_line, token_col) :: acc) (* reversing list so tokens represent the source code in the correct order *)
+                | _ -> collect_tokens ((new_token, token_line, token_col) :: acc)
 
         in collect_tokens []

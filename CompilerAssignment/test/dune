@@ -2,3 +2,9 @@
  (name lexer_test)
  (libraries CompilerAssignment)
  (deps (glob_files_rec test_cases/lexer_tests/*)))
+
+(test
+ (name parser_test)
+ (libraries CompilerAssignment)
+ (deps (glob_files_rec test_cases/parser_tests/*)
+       (alias runtest-lexer_test)))
