@@ -1,0 +1,13 @@
+function TypeSystem::Two_labels(%f: f64) -> void {
+  locals {
+    %p: ptr<i32>;
+  }
+  entry bb10;
+
+  bb10:
+    %p = cast %f to ptr<i32>;
+    return;
+
+  bb10:
+    return;
+}

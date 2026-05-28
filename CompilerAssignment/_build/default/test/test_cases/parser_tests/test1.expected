@@ -11,12 +11,12 @@ function Math::abs_diff(%a: i32, %b: i32) -> i32 {
 
   bb0:
     %zero = 0;
-    %d = bin sub, %a, %b;
-    %is_neg = bin lt, %d, %zero;
+    %d = bin sub %a, %b;
+    %is_neg = bin lt %d, %zero;
     cjump %is_neg, bb1, bb2;
 
   bb1:
-    %r = un neg, %d;
+    %r = un neg %d;
     return %r;
 
   bb2:

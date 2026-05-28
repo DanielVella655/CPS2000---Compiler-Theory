@@ -7,20 +7,28 @@
    CompilerAssignment.cma
    CompilerAssignment.cmxa
    META
+   code_generator.ml
    compilerAssignment.cmi
    compilerAssignment.cmt
    compilerAssignment.cmx
    compilerAssignment.ml
+   compilerAssignment__Code_generator.cmi
+   compilerAssignment__Code_generator.cmt
+   compilerAssignment__Code_generator.cmx
    compilerAssignment__Lexer.cmi
    compilerAssignment__Lexer.cmt
    compilerAssignment__Lexer.cmx
    compilerAssignment__Parser.cmi
    compilerAssignment__Parser.cmt
    compilerAssignment__Parser.cmx
+   compilerAssignment__Type_checker.cmi
+   compilerAssignment__Type_checker.cmt
+   compilerAssignment__Type_checker.cmx
    dune-package
    lexer.ml
    opam
-   parser.ml))
+   parser.ml
+   type_checker.ml))
  (libexec (CompilerAssignment.cmxs))
  (bin (CompilerAssignment)))
 (library
@@ -44,11 +52,19 @@
     (name CompilerAssignment)
     (modules
      (module
+      (obj_name compilerAssignment__Code_generator)
+      (visibility public)
+      (source (path Code_generator) (impl (path code_generator.ml))))
+     (module
       (obj_name compilerAssignment__Lexer)
       (visibility public)
       (source (path Lexer) (impl (path lexer.ml))))
      (module
       (obj_name compilerAssignment__Parser)
       (visibility public)
-      (source (path Parser) (impl (path parser.ml))))))
+      (source (path Parser) (impl (path parser.ml))))
+     (module
+      (obj_name compilerAssignment__Type_checker)
+      (visibility public)
+      (source (path Type_checker) (impl (path type_checker.ml))))))
    (wrapped true))))

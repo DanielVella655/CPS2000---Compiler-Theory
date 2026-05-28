@@ -11,11 +11,6 @@ Local of string | (* ex: %a *)
 Label of string |
 (* Literals *)
 IntLit of int | FloatLit of float | True | False | Null |
-(* Operators *)
-Neg | Not |
-Add | Sub | Mul | Div | Mod | 
-Eq | Ne | Lt | Le | Gt | Ge | 
-And | Or |
 (* Punctuation *)
 LBracket | RBracket | LCurly | RCurly | LAngle | RAngle | Colon | Semicolon | PathSep | Arrow | Equal | Comma | (* where PathSep is :: *)
 EOF
@@ -56,21 +51,6 @@ let string_of_tokens token =
   | (True, line, col)       -> "(True, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
   | (False, line, col)      -> "(False, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
   | (Null, line, col)       -> "(Null, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
-  | (Neg, line, col)        -> "(Neg, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
-  | (Not, line, col)        -> "(Not, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
-  | (Add, line, col)        -> "(Add, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
-  | (Sub, line, col)        -> "(Sub, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
-  | (Mul, line, col)        -> "(Mul, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
-  | (Div, line, col)        -> "(Div, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
-  | (Mod, line, col)        -> "(Mod, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
-  | (Eq, line, col)         -> "(Eq, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
-  | (Ne, line, col)         -> "(Ne, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
-  | (Lt, line, col)         -> "(Lt, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
-  | (Le, line, col)         -> "(Le, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
-  | (Gt, line, col)         -> "(Gt, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
-  | (Ge, line, col)         -> "(Ge, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
-  | (And, line, col)        -> "(And, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
-  | (Or, line, col)         -> "(Or, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")" 
   | (LBracket, line, col)   -> "(LBracket, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
   | (RBracket, line, col)   -> "(RBracket, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
   | (LCurly, line, col)     -> "(LCurly, " ^ string_of_int line ^ ", " ^ string_of_int col ^ ")"
@@ -190,7 +170,7 @@ let st_int state =
     match state with
     | StartSt -> 0  | IdentSt -> 1  | IntLitSt -> 2   | FloatLitSt -> 3 | PercentSt -> 4 
     | LocalSt -> 5  | ColonSt -> 6  | PathSepSt -> 7  | PlusSt -> 8     | MinusSt -> 9 
-    | ArrowSt -> 10 | EqualSt -> 11 | GreaterSt -> 12 | PunctSt -> 13   | ErrorSt -> 14
+    | ArrowSt -> 10 | EqualSt -> 11 | GreaterSt -> 12 | PunctSt -> 13   | ErrorSt -> failwith "Lexer Bug: Trying to transition to error state."
 
 let ch_int char =
     match char with

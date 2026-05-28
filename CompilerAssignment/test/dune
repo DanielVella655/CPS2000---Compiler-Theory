@@ -8,3 +8,9 @@
  (libraries CompilerAssignment)
  (deps (glob_files_rec test_cases/parser_tests/*)
        (alias runtest-lexer_test)))
+
+(test
+ (name type_check_test)
+ (libraries CompilerAssignment)
+ (deps (glob_files_rec test_cases/type_check_tests/*)
+       (alias runtest-parser_test)))

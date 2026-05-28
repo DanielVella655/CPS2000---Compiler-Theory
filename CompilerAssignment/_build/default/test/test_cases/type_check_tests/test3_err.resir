@@ -1,0 +1,10 @@
+function Operators::invalid_logical(%a: i32, %b: i32) -> bool {
+  locals {
+    %result: bool;
+  }
+  entry bb1;
+
+  bb1:
+    %result = bin and %a, %b;
+    return %result;
+}

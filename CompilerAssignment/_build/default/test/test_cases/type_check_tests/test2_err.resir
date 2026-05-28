@@ -1,0 +1,8 @@
+function Memory::bad_entry(%ptr: ptr<i32>, %val: f64) -> void {
+  locals {}
+  entry bb1;
+
+  bb0:
+    store %ptr, %val;
+    return;
+}
