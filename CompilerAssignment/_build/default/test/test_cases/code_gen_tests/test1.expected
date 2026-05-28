@@ -1,0 +1,25 @@
+#include <stdint.h>
+#include <stdbool.h>
+#include <stddef.h>
+
+int32_t Math_abs_diff(int32_t a, int32_t b) {
+    int32_t zero, neg, d, r;
+    int64_t pos;
+    bool is_neg;
+    goto bb0;
+
+bb0:
+    zero = 0;
+    d = neg - zero;
+    is_neg = d < zero;
+    if (is_neg) goto bb1; else goto bb2;
+
+bb1:
+    r = -d;
+    return r;
+
+bb2:
+    pos = 37;
+    neg = -28;
+    return d;
+}

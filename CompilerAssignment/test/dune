@@ -14,3 +14,9 @@
  (libraries CompilerAssignment)
  (deps (glob_files_rec test_cases/type_check_tests/*)
        (alias runtest-parser_test)))
+
+(test
+ (name code_gen_test)
+ (libraries CompilerAssignment)
+ (deps (glob_files_rec test_cases/code_gen_tests/*)
+       (alias runtest-type_check_test)))

@@ -1,0 +1,23 @@
+extern type Custom::Struct::Point {
+  x : i32;
+  y : i32;
+}
+
+function Geom::point_x(%p: ptr<Custom::Struct::Point>) -> i32 {
+  locals {
+    %fp : ptr<i32>;
+    %v : i32;
+    %x : i32;
+    %a : i64;
+    %b : i64;
+  }
+  entry bb0;
+
+  bb0:
+    %a = const +37;
+    %b = const 23;
+    %fp = member_ptr %p, x;
+    %v = load %fp;
+    %x = call Math::abs_diff(%a, %b);
+    return %v;
+}

@@ -1,0 +1,22 @@
+#include <stdint.h>
+#include <stdbool.h>
+#include <stddef.h>
+
+typedef struct Custom_Struct_Point {
+    int32_t x, y;
+} Custom_Struct_Point;
+
+int32_t Geom_point_x(Custom_Struct_Point* p) {
+    int32_t* fp;
+    int32_t v, x;
+    int64_t a, b;
+    goto bb0;
+
+bb0:
+    a = 37;
+    b = 23;
+    fp = &(p->x);
+    v = *fp;
+    x = Math_abs_diff(a, b);
+    return v;
+}
