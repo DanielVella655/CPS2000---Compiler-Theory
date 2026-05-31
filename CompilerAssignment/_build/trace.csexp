@@ -1,4 +1,4 @@
-(6:config4:init19:1780011407147110000(7:version6:3.22.2)(9:build_dir6:_build)(4:argv(4:dune4:test))(3:env(39:__CFBundleIdentifier=com.apple.Terminal56:TMPDIR=/var/folders/cg/mlj6vw517h1brhdpb7c9gk0c0000gn/T/13:XPC_FLAGS=0x019:TERM=xterm-256color65:SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.pwUjpXzgAN/Listeners18:XPC_SERVICE_NAME=027:TERM_PROGRAM=Apple_Terminal19:COLORTERM=truecolor17:OSLogRateLimit=6424:TERM_PROGRAM_VERSION=46652:TERM_SESSION_ID=F44A619E-B2F9-47CE-AB99-C5F15A83227E14:SHELL=/bin/zsh23:HOME=/Users/danielvella19:LOGNAME=danielvella16:USER=danielvella402:PATH=/Users/danielvella/.opam/default/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/pmk/env/global/bin:/Library/TeX/texbin:/opt/homebrew/bin7:SHLVL=184:PWD=/Users/danielvella/Desktop/Projects/CPS2000 - Compiler Theory/CompilerAssignment25:OLDPWD=/Users/danielvella20:OPAMNOENVNOTICE=true51:OPAM_SWITCH_PREFIX=/Users/danielvella/.opam/default161:CAML_LD_LIBRARY_PATH=/Users/danielvella/.opam/default/lib/stublibs:/Users/danielvella/.opam/default/lib/ocaml/stublibs:/Users/danielvella/.opam/default/lib/ocaml67:OCAMLTOP_INCLUDE_PATH=/Users/danielvella/.opam/default/lib/toplevel65:OCAML_TOPLEVEL_PATH=/Users/danielvella/.opam/default/lib/toplevel87:OPAM_LAST_ENV=/Users/danielvella/.opam/.last-env/env-20809a2a9910769c1805225610b8db7b-012:LANG=C.UTF-814:LC_CTYPE=UTF-843:_=/Users/danielvella/.opam/default/bin/dune37:__CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0))(4:root80:/Users/danielvella/Desktop/Projects/CPS2000 - Compiler Theory/CompilerAssignment)(3:pid5:53946)(11:initial_cwd80:/Users/danielvella/Desktop/Projects/CPS2000 - Compiler Theory/CompilerAssignment)(5:start19:1780011407139588000))(3:log4:info19:1780011407147145000(7:message10:ocamlparam)(10:OCAMLPARAM5:unset))(6:thread12:spawn_thread19:1780011407148119000(4:name7:console))(3:log4:info19:1780011407148194000(7:message20:Shared cache enabled)(13:cache_enabled25:Enabled_except_user_rules))(3:log4:info19:1780011407148237000(7:message21:Shared cache location)(8:root_dir33:/Users/danielvella/.cache/dune/db))(3:log4:info19:1780011407148291000(7:message14:Workspace root)(4:root82:"/Users/danielvella/Desktop/Projects/CPS2000 - Compiler Theory/CompilerAssignment"))(3:log4:info19:1780011407151171000(7:message25:Auto-detected concurrency)(11:concurrency2:10))(6:thread12:spawn_thread19:1780011407151189000(4:name14:signal-watcher))(10:persistent2:db(19:17800114071512400006:120000)(4:path17:_build/.digest-db)(6:module9:DIGEST-DB)(9:operation4:load))(3:log4:info19:1780011407151852000(7:message12:Dune context)(7:context((4:name7:default)(4:kind7:default)(7:profile3:Dev)(6:merlin4:true)(14:fdo_target_exe())(9:build_dir(12:In_build_dir7:default))(15:instrument_with()))))(5:rules9:Dune load(19:17800114071518740006:857000)(3:dir1:.))(7:process5:start19:1780011407153291000(12:process_args(7:-config))(3:pid5:53948)(10:categories())(6:queued4:1000)(4:prog47:/Users/danielvella/.opam/default/bin/ocamlc.opt)(3:dir1:.))(7:process15:signal_received19:1780011407160381000(6:signal4:CHLD))(7:process6:finish(19:17800114071532910007:7109000)(12:process_args(7:-config))(3:pid5:53948)(10:categories())(4:prog47:/Users/danielvella/.opam/default/bin/ocamlc.opt)(3:dir1:.)(4:exit1:0)(6:rusage((13:user_cpu_time7:2619000)(15:system_cpu_time7:2442000)(6:maxrss7:8781824)(6:minflt3:519)(6:majflt3:184)(7:inblock1:0)(7:oublock1:0)(5:nvcsw1:0)(6:nivcsw1:6))))(10:persistent2:db(19:17800114071608400005:54000)(4:path10:_build/.db)(6:module14:INCREMENTAL-DB)(9:operation4:load))(6:thread12:spawn_thread19:1780011407182057000(4:name11:thread-pool))(6:thread12:spawn_thread19:1780011407182078000(4:name11:thread-pool))(6:thread12:spawn_thread19:1780011407182096000(4:name11:thread-pool))(6:thread12:spawn_thread19:1780011407182111000(4:name11:thread-pool))(7:sandbox6:create(19:17800114071821300006:737000)(6:queued5:74000)(3:loc11:test/dune:2)(3:dir48:_build/.sandbox/399ab8becc99a4abc7f5836f5d1690fe))(7:process5:start19:1780011407182988000(12:process_args())(3:pid5:53949)(10:categories())(6:queued4:1000)(4:prog16:./lexer_test.exe)(3:dir61:_build/.sandbox/399ab8becc99a4abc7f5836f5d1690fe/default/test)(12:target_files(80:_build/.actions/default/test/runtest-lexer_test-c069956413cef30081aacf99215c7e5c)))(7:process15:signal_received19:1780011407550139000(6:signal4:CHLD))(7:process6:finish(19:17800114071829880009:367221000)(12:process_args())(3:pid5:53949)(10:categories())(4:prog16:./lexer_test.exe)(3:dir61:_build/.sandbox/399ab8becc99a4abc7f5836f5d1690fe/default/test)(4:exit1:0)(12:target_files(80:_build/.actions/default/test/runtest-lexer_test-c069956413cef30081aacf99215c7e5c))(6:stdout646:Running ResIR Lexer Test Suite...
+(6:config4:init19:1780177500376744000(7:version6:3.22.2)(9:build_dir6:_build)(4:argv(4:dune4:test))(3:env(39:__CFBundleIdentifier=com.apple.Terminal56:TMPDIR=/var/folders/cg/mlj6vw517h1brhdpb7c9gk0c0000gn/T/13:XPC_FLAGS=0x019:TERM=xterm-256color65:SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.pwUjpXzgAN/Listeners18:XPC_SERVICE_NAME=027:TERM_PROGRAM=Apple_Terminal19:COLORTERM=truecolor17:OSLogRateLimit=6424:TERM_PROGRAM_VERSION=46652:TERM_SESSION_ID=F44A619E-B2F9-47CE-AB99-C5F15A83227E14:SHELL=/bin/zsh23:HOME=/Users/danielvella19:LOGNAME=danielvella16:USER=danielvella402:PATH=/Users/danielvella/.opam/default/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/pmk/env/global/bin:/Library/TeX/texbin:/opt/homebrew/bin7:SHLVL=184:PWD=/Users/danielvella/Desktop/Projects/CPS2000 - Compiler Theory/CompilerAssignment25:OLDPWD=/Users/danielvella20:OPAMNOENVNOTICE=true51:OPAM_SWITCH_PREFIX=/Users/danielvella/.opam/default161:CAML_LD_LIBRARY_PATH=/Users/danielvella/.opam/default/lib/stublibs:/Users/danielvella/.opam/default/lib/ocaml/stublibs:/Users/danielvella/.opam/default/lib/ocaml67:OCAMLTOP_INCLUDE_PATH=/Users/danielvella/.opam/default/lib/toplevel65:OCAML_TOPLEVEL_PATH=/Users/danielvella/.opam/default/lib/toplevel87:OPAM_LAST_ENV=/Users/danielvella/.opam/.last-env/env-20809a2a9910769c1805225610b8db7b-012:LANG=C.UTF-814:LC_CTYPE=UTF-843:_=/Users/danielvella/.opam/default/bin/dune37:__CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0))(4:root80:/Users/danielvella/Desktop/Projects/CPS2000 - Compiler Theory/CompilerAssignment)(3:pid5:63258)(11:initial_cwd80:/Users/danielvella/Desktop/Projects/CPS2000 - Compiler Theory/CompilerAssignment)(5:start19:1780177500370281000))(3:log4:info19:1780177500376770000(7:message10:ocamlparam)(10:OCAMLPARAM5:unset))(6:thread12:spawn_thread19:1780177500377802000(4:name7:console))(3:log4:info19:1780177500377863000(7:message20:Shared cache enabled)(13:cache_enabled25:Enabled_except_user_rules))(3:log4:info19:1780177500377891000(7:message21:Shared cache location)(8:root_dir33:/Users/danielvella/.cache/dune/db))(3:log4:info19:1780177500377923000(7:message14:Workspace root)(4:root82:"/Users/danielvella/Desktop/Projects/CPS2000 - Compiler Theory/CompilerAssignment"))(3:log4:info19:1780177500380797000(7:message25:Auto-detected concurrency)(11:concurrency2:10))(6:thread12:spawn_thread19:1780177500380804000(4:name14:signal-watcher))(10:persistent2:db(19:17801775003808520005:89000)(4:path17:_build/.digest-db)(6:module9:DIGEST-DB)(9:operation4:load))(3:log4:info19:1780177500381263000(7:message12:Dune context)(7:context((4:name7:default)(4:kind7:default)(7:profile3:Dev)(6:merlin4:true)(14:fdo_target_exe())(9:build_dir(12:In_build_dir7:default))(15:instrument_with()))))(5:rules9:Dune load(19:17801775003812760006:434000)(3:dir1:.))(7:process5:start19:1780177500382143000(12:process_args(7:-config))(3:pid5:63260)(10:categories())(6:queued4:1000)(4:prog47:/Users/danielvella/.opam/default/bin/ocamlc.opt)(3:dir1:.))(7:process15:signal_received19:1780177500387922000(6:signal4:CHLD))(7:process6:finish(19:17801775003821430007:5801000)(12:process_args(7:-config))(3:pid5:63260)(10:categories())(4:prog47:/Users/danielvella/.opam/default/bin/ocamlc.opt)(3:dir1:.)(4:exit1:0)(6:rusage((13:user_cpu_time7:2294000)(15:system_cpu_time7:2658000)(6:maxrss7:8781824)(6:minflt3:519)(6:majflt3:184)(7:inblock1:0)(7:oublock1:0)(5:nvcsw1:0)(6:nivcsw1:2))))(10:persistent2:db(19:17801775003883450005:48000)(4:path10:_build/.db)(6:module14:INCREMENTAL-DB)(9:operation4:load))(6:thread12:spawn_thread19:1780177500423044000(4:name11:thread-pool))(6:thread12:spawn_thread19:1780177500423068000(4:name11:thread-pool))(6:thread12:spawn_thread19:1780177500423086000(4:name11:thread-pool))(6:thread12:spawn_thread19:1780177500423097000(4:name11:thread-pool))(7:sandbox6:create(19:17801775004231240006:739000)(6:queued5:82000)(3:loc11:test/dune:2)(3:dir48:_build/.sandbox/8fe17dab592717bd58e9ba8d0a3a3cad))(7:process5:start19:1780177500423988000(12:process_args())(3:pid5:63261)(10:categories())(6:queued4:1000)(4:prog16:./lexer_test.exe)(3:dir61:_build/.sandbox/8fe17dab592717bd58e9ba8d0a3a3cad/default/test)(12:target_files(80:_build/.actions/default/test/runtest-lexer_test-c069956413cef30081aacf99215c7e5c)))(7:process15:signal_received19:1780177500793305000(6:signal4:CHLD))(7:process6:finish(19:17801775004239880009:369384000)(12:process_args())(3:pid5:63261)(10:categories())(4:prog16:./lexer_test.exe)(3:dir61:_build/.sandbox/8fe17dab592717bd58e9ba8d0a3a3cad/default/test)(4:exit1:0)(12:target_files(80:_build/.actions/default/test/runtest-lexer_test-c069956413cef30081aacf99215c7e5c))(6:stdout646:Running ResIR Lexer Test Suite...
   [PASS] test/test_cases/lexer_tests/test1.resir
   [PASS] test/test_cases/lexer_tests/test2.resir
   [PASS] test/test_cases/lexer_tests/test3_err.resir (Caught expected exception: "Lexical Error at Line 6, Col 15: Standalone '%' symbol. Expected an identifier.")
@@ -6,7 +6,7 @@
   [PASS] test/test_cases/lexer_tests/test5_err.resir (Caught expected exception: "Lexical Error at Line 1, Col 1: Standalone '+' symbol. Expected a literal. Did you mean 'add'?")
 All tests passed successfully!
 
-)(6:rusage((13:user_cpu_time7:2709000)(15:system_cpu_time7:3518000)(6:maxrss7:2555904)(6:minflt3:230)(6:majflt2:13)(7:inblock1:0)(7:oublock1:0)(5:nvcsw1:0)(6:nivcsw1:3))))(6:action10:write-file(19:17800114075505630006:149000)(4:file80:_build/.actions/default/test/runtest-lexer_test-c069956413cef30081aacf99215c7e5c)(4:size1:0))(7:sandbox7:extract(19:17800114075507480004:3000)(3:loc11:test/dune:2)(3:dir48:_build/.sandbox/399ab8becc99a4abc7f5836f5d1690fe))(7:sandbox7:destroy(19:17800114075507950007:1530000)(6:queued5:28000)(3:loc11:test/dune:2)(3:dir48:_build/.sandbox/399ab8becc99a4abc7f5836f5d1690fe))(7:sandbox6:create(19:17800114075527280007:1706000)(6:queued5:13000)(3:loc11:test/dune:7)(3:dir48:_build/.sandbox/9d4f65b2765f9cb6cb04d196fbbd2865))(7:process5:start19:1780011407554717000(12:process_args())(3:pid5:53950)(10:categories())(6:queued4:2000)(4:prog17:./parser_test.exe)(3:dir61:_build/.sandbox/9d4f65b2765f9cb6cb04d196fbbd2865/default/test)(12:target_files(81:_build/.actions/default/test/runtest-parser_test-80427a1b2b28bb73a42aa78c2a683523)))(7:process15:signal_received19:1780011407808515000(6:signal4:CHLD))(7:process6:finish(19:17800114075547170009:253881000)(12:process_args())(3:pid5:53950)(10:categories())(4:prog17:./parser_test.exe)(3:dir61:_build/.sandbox/9d4f65b2765f9cb6cb04d196fbbd2865/default/test)(4:exit1:0)(12:target_files(81:_build/.actions/default/test/runtest-parser_test-80427a1b2b28bb73a42aa78c2a683523))(6:stdout841:Running ResIR Parser Test Suite...
+)(6:rusage((13:user_cpu_time7:2657000)(15:system_cpu_time7:4205000)(6:maxrss7:2555904)(6:minflt3:230)(6:majflt2:13)(7:inblock1:0)(7:oublock1:0)(5:nvcsw1:0)(6:nivcsw1:5))))(6:action10:write-file(19:17801775007937770006:140000)(4:file80:_build/.actions/default/test/runtest-lexer_test-c069956413cef30081aacf99215c7e5c)(4:size1:0))(7:sandbox7:extract(19:17801775007939570004:3000)(3:loc11:test/dune:2)(3:dir48:_build/.sandbox/8fe17dab592717bd58e9ba8d0a3a3cad))(7:sandbox7:destroy(19:17801775007940100007:1716000)(6:queued5:34000)(3:loc11:test/dune:2)(3:dir48:_build/.sandbox/8fe17dab592717bd58e9ba8d0a3a3cad))(7:sandbox6:create(19:17801775007961120007:1636000)(6:queued5:19000)(3:loc11:test/dune:7)(3:dir48:_build/.sandbox/417bd2f718d16fe37ec31e78ceb5661c))(7:process5:start19:1780177500798076000(12:process_args())(3:pid5:63262)(10:categories())(6:queued4:2000)(4:prog17:./parser_test.exe)(3:dir61:_build/.sandbox/417bd2f718d16fe37ec31e78ceb5661c/default/test)(12:target_files(81:_build/.actions/default/test/runtest-parser_test-80427a1b2b28bb73a42aa78c2a683523)))(7:process15:signal_received19:1780177500957905000(6:signal4:CHLD))(7:process6:finish(19:17801775007980760009:159921000)(12:process_args())(3:pid5:63262)(10:categories())(4:prog17:./parser_test.exe)(3:dir61:_build/.sandbox/417bd2f718d16fe37ec31e78ceb5661c/default/test)(4:exit1:0)(12:target_files(81:_build/.actions/default/test/runtest-parser_test-80427a1b2b28bb73a42aa78c2a683523))(6:stdout841:Running ResIR Parser Test Suite...
   Successfully parsed once.
   [PASS] test/test_cases/parser_tests/test1.resir
   Successfully parsed once.
@@ -17,119 +17,19 @@ All tests passed successfully!
   [PASS] test/test_cases/parser_tests/test6_err.resir (Caught expected exception: "Syntax Error at Line 4, Col 2: Expected a function definition.")
 All tests passed successfully!
 
-)(6:rusage((13:user_cpu_time7:2879000)(15:system_cpu_time7:4011000)(6:maxrss7:2818048)(6:minflt3:245)(6:majflt2:15)(7:inblock1:0)(7:oublock1:0)(5:nvcsw1:0)(6:nivcsw1:3))))(6:action10:write-file(19:17800114078090310006:136000)(4:file81:_build/.actions/default/test/runtest-parser_test-80427a1b2b28bb73a42aa78c2a683523)(4:size1:0))(7:sandbox7:extract(19:17800114078092070004:3000)(3:loc11:test/dune:7)(3:dir48:_build/.sandbox/9d4f65b2765f9cb6cb04d196fbbd2865))(7:sandbox7:destroy(19:17800114078092540007:1708000)(6:queued5:30000)(3:loc11:test/dune:7)(3:dir48:_build/.sandbox/9d4f65b2765f9cb6cb04d196fbbd2865))(6:thread12:spawn_thread19:1780011407811296000(4:name11:thread-pool))(7:sandbox6:create(19:17800114078113970007:1592000)(6:queued6:103000)(3:loc12:test/dune:13)(3:dir48:_build/.sandbox/ca8c854cbb171ab259f91922519d6b25))(7:process5:start19:1780011407813349000(12:process_args())(3:pid5:53951)(10:categories())(6:queued4:3000)(4:prog21:./type_check_test.exe)(3:dir61:_build/.sandbox/ca8c854cbb171ab259f91922519d6b25/default/test)(12:target_files(85:_build/.actions/default/test/runtest-type_check_test-b63ab3f69ac9bbf78d6c1c96f77b089b)))(7:process15:signal_received19:1780011407973622000(6:signal4:CHLD))(7:process6:finish(19:17800114078133490009:160362000)(12:process_args())(3:pid5:53951)(10:categories())(4:prog21:./type_check_test.exe)(3:dir61:_build/.sandbox/ca8c854cbb171ab259f91922519d6b25/default/test)(4:exit1:0)(12:target_files(85:_build/.actions/default/test/runtest-type_check_test-b63ab3f69ac9bbf78d6c1c96f77b089b))(6:stdout956:Running ResIR Type Checker Test Suite...
+)(6:rusage((13:user_cpu_time7:2906000)(15:system_cpu_time7:4013000)(6:maxrss7:2818048)(6:minflt3:245)(6:majflt2:15)(7:inblock1:0)(7:oublock1:0)(5:nvcsw1:0)(6:nivcsw1:3))))(6:action10:write-file(19:17801775009584640006:148000)(4:file81:_build/.actions/default/test/runtest-parser_test-80427a1b2b28bb73a42aa78c2a683523)(4:size1:0))(7:sandbox7:extract(19:17801775009586530004:3000)(3:loc11:test/dune:7)(3:dir48:_build/.sandbox/417bd2f718d16fe37ec31e78ceb5661c))(7:sandbox7:destroy(19:17801775009586980007:1662000)(6:queued5:27000)(3:loc11:test/dune:7)(3:dir48:_build/.sandbox/417bd2f718d16fe37ec31e78ceb5661c))(6:thread12:spawn_thread19:1780177500960753000(4:name11:thread-pool))(7:sandbox6:create(19:17801775009608940007:1675000)(6:queued6:144000)(3:loc12:test/dune:13)(3:dir48:_build/.sandbox/b1b7dec555c23fe7c5fd8579c26686e0))(7:process5:start19:1780177500962955000(12:process_args())(3:pid5:63263)(10:categories())(6:queued4:4000)(4:prog21:./type_check_test.exe)(3:dir61:_build/.sandbox/b1b7dec555c23fe7c5fd8579c26686e0/default/test)(12:target_files(85:_build/.actions/default/test/runtest-type_check_test-b63ab3f69ac9bbf78d6c1c96f77b089b)))(7:process15:signal_received19:1780177501165301000(6:signal4:CHLD))(7:process6:finish(19:17801775009629550009:202496000)(12:process_args())(3:pid5:63263)(10:categories())(4:prog21:./type_check_test.exe)(3:dir61:_build/.sandbox/b1b7dec555c23fe7c5fd8579c26686e0/default/test)(4:exit1:0)(12:target_files(85:_build/.actions/default/test/runtest-type_check_test-b63ab3f69ac9bbf78d6c1c96f77b089b))(6:stdout948:Running ResIR Type Checker Test Suite...
   [PASS] test/test_cases/type_check_tests/test1_err.resir (Caught expected exception: "Semantic Error: Target of cjump "bb3" does not exist.")
-  [PASS] test/test_cases/type_check_tests/test2_err.resir (Caught expected exception: "Semantic Error: Declared entry block "bb1" does not exist.")
-  [PASS] test/test_cases/type_check_tests/test3_err.resir (Caught expected exception: "Semantic Error: Cannot apply and to local of type "i32".")
-  [PASS] test/test_cases/type_check_tests/test4_err.resir (Caught expected exception: "Semantic Error: Return type mismatch. Expected "i32" but found "f64".")
+  [PASS] test/test_cases/type_check_tests/test2_err.resir (Caught expected exception: "Semantic Error: Declared entry block bb1 does not exist.")
+  [PASS] test/test_cases/type_check_tests/test3_err.resir (Caught expected exception: "Semantic Error: Cannot apply and to local of type i32.")
+  [PASS] test/test_cases/type_check_tests/test4_err.resir (Caught expected exception: "Semantic Error: Return type mismatch. Expected i32 but found f64.")
   [PASS] test/test_cases/type_check_tests/test5_err.resir (Caught expected exception: "Semantic Error: Block labels must be unique.")
   [PASS] test/test_cases/type_check_tests/test6_err.resir (Caught expected exception: "Semantic Error: member_ptr requires a pointer to an extern path.")
 All tests passed successfully!
-)(6:rusage((13:user_cpu_time7:2720000)(15:system_cpu_time7:3701000)(6:maxrss7:2605056)(6:minflt3:233)(6:majflt2:15)(7:inblock1:0)(7:oublock1:0)(5:nvcsw1:0)(6:nivcsw1:4))))(6:action10:write-file(19:17800114079742020006:181000)(4:file85:_build/.actions/default/test/runtest-type_check_test-b63ab3f69ac9bbf78d6c1c96f77b089b)(4:size1:0))(7:sandbox7:extract(19:17800114079744340004:4000)(3:loc12:test/dune:13)(3:dir48:_build/.sandbox/ca8c854cbb171ab259f91922519d6b25))(6:thread12:spawn_thread19:1780011407974467000(4:name11:thread-pool))(7:sandbox7:destroy(19:17800114079745810007:1766000)(6:queued6:122000)(3:loc12:test/dune:13)(3:dir48:_build/.sandbox/ca8c854cbb171ab259f91922519d6b25))(6:thread12:spawn_thread19:1780011407976762000(4:name11:thread-pool))(7:sandbox6:create(19:17800114079768740007:1068000)(6:queued6:116000)(3:loc12:test/dune:19)(3:dir48:_build/.sandbox/062d6bad45da5e592803437c1c433e65))(7:process5:start19:1780011407978287000(12:process_args())(3:pid5:53952)(10:categories())(6:queued4:3000)(4:prog19:./code_gen_test.exe)(3:dir61:_build/.sandbox/062d6bad45da5e592803437c1c433e65/default/test)(12:target_files(83:_build/.actions/default/test/runtest-code_gen_test-0062536fdcac8f334fcb9e6eeb1d3d4e)))(7:process15:signal_received19:1780011408291770000(6:signal4:CHLD))(7:process6:finish(19:17800114079782870009:313552000)(12:process_args())(3:pid5:53952)(10:categories())(4:prog19:./code_gen_test.exe)(3:dir61:_build/.sandbox/062d6bad45da5e592803437c1c433e65/default/test)(4:exit1:1)(5:error18:exited with code 1)(12:target_files(83:_build/.actions/default/test/runtest-code_gen_test-0062536fdcac8f334fcb9e6eeb1d3d4e))(6:stdout895:Running ResIR Code Generator Test Suite...
+)(6:rusage((13:user_cpu_time7:2763000)(15:system_cpu_time7:3836000)(6:maxrss7:2605056)(6:minflt3:233)(6:majflt2:15)(7:inblock1:0)(7:oublock1:0)(5:nvcsw1:0)(6:nivcsw1:6))))(6:action10:write-file(19:17801775011659400006:186000)(4:file85:_build/.actions/default/test/runtest-type_check_test-b63ab3f69ac9bbf78d6c1c96f77b089b)(4:size1:0))(7:sandbox7:extract(19:17801775011661670005:12000)(3:loc12:test/dune:13)(3:dir48:_build/.sandbox/b1b7dec555c23fe7c5fd8579c26686e0))(6:thread12:spawn_thread19:1780177501166213000(4:name11:thread-pool))(7:sandbox7:destroy(19:17801775011663130007:3825000)(6:queued6:113000)(3:loc12:test/dune:13)(3:dir48:_build/.sandbox/b1b7dec555c23fe7c5fd8579c26686e0))(6:thread12:spawn_thread19:1780177501170650000(4:name11:thread-pool))(7:sandbox6:create(19:17801775011714250007:5448000)(6:queued6:778000)(3:loc12:test/dune:19)(3:dir48:_build/.sandbox/1f4eefa3d23294871a37c7e124cd0dc3))(7:process5:start19:1780177501177303000(12:process_args())(3:pid5:63264)(10:categories())(6:queued4:3000)(4:prog19:./code_gen_test.exe)(3:dir61:_build/.sandbox/1f4eefa3d23294871a37c7e124cd0dc3/default/test)(12:target_files(83:_build/.actions/default/test/runtest-code_gen_test-0062536fdcac8f334fcb9e6eeb1d3d4e)))(7:process15:signal_received19:1780177501507093000(6:signal4:CHLD))(7:process6:finish(19:17801775011773030009:329866000)(12:process_args())(3:pid5:63264)(10:categories())(4:prog19:./code_gen_test.exe)(3:dir61:_build/.sandbox/1f4eefa3d23294871a37c7e124cd0dc3/default/test)(4:exit1:0)(12:target_files(83:_build/.actions/default/test/runtest-code_gen_test-0062536fdcac8f334fcb9e6eeb1d3d4e))(6:stdout283:Running ResIR Code Generator Test Suite...
   [PASS] test/test_cases/code_gen_tests/test1.resir
-  [FAIL] test/test_cases/code_gen_tests/test2.resir
-    Expected: #include <stdint.h>
-#include <stdbool.h>
-#include <stddef.h>typedef struct Custom_Struct_Point {
-    int32_t x, y;
-} Custom_Struct_Point;
+  [PASS] test/test_cases/code_gen_tests/test2.resir
+  [PASS] test/test_cases/code_gen_tests/test3.resir
+  [PASS] test/test_cases/code_gen_tests/test4.resir
+All tests passed successfully!
 
-int32_t Geom_point_x(Custom_Struct_Point* p) {
-    int32_t* fp;
-    int32_t v, x;
-    int64_t a, b;
-    goto bb0;
-
-bb0:
-    a = 37;
-    b = 23;
-    fp = &(p->x);
-    v = *fp;
-    x = Math_abs_diff(a, b);
-    return v;
-}
-    Got:      #include <stdint.h>
-#include <stdbool.h>
-#include <stddef.h>
-
-typedef struct Custom_Struct_Point {
-    int32_t x, y;
-} Custom_Struct_Point;
-
-int32_t Geom_point_x(Custom_Struct_Point* p) {
-    int32_t* fp;
-    int32_t v, x;
-    int64_t a, b;
-    goto bb0;
-
-bb0:
-    a = 37;
-    b = 23;
-    fp = &(p->x);
-    v = *fp;
-    x = Math_abs_diff(a, b);
-    return v;
-}
-)(6:rusage((13:user_cpu_time7:3625000)(15:system_cpu_time7:3850000)(6:maxrss7:2555904)(6:minflt3:230)(6:majflt2:15)(7:inblock1:0)(7:oublock1:0)(5:nvcsw1:0)(6:nivcsw1:3))))(6:thread12:spawn_thread19:1780011408292324000(4:name11:thread-pool))(7:sandbox7:destroy(19:17800114082924250007:1343000)(6:queued6:108000)(3:loc12:test/dune:19)(3:dir48:_build/.sandbox/062d6bad45da5e592803437c1c433e65))(11:diagnostics4:user19:1780011408293848000(3:exn939:File "test/dune", line 19, characters 7-20:
-Running ResIR Code Generator Test Suite...
-  [PASS] test/test_cases/code_gen_tests/test1.resir
-  [FAIL] test/test_cases/code_gen_tests/test2.resir
-    Expected: #include <stdint.h>
-#include <stdbool.h>
-#include <stddef.h>typedef struct Custom_Struct_Point {
-    int32_t x, y;
-} Custom_Struct_Point;
-
-int32_t Geom_point_x(Custom_Struct_Point* p) {
-    int32_t* fp;
-    int32_t v, x;
-    int64_t a, b;
-    goto bb0;
-
-bb0:
-    a = 37;
-    b = 23;
-    fp = &(p->x);
-    v = *fp;
-    x = Math_abs_diff(a, b);
-    return v;
-}
-    Got:      #include <stdint.h>
-#include <stdbool.h>
-#include <stddef.h>
-
-typedef struct Custom_Struct_Point {
-    int32_t x, y;
-} Custom_Struct_Point;
-
-int32_t Geom_point_x(Custom_Struct_Point* p) {
-    int32_t* fp;
-    int32_t v, x;
-    int64_t a, b;
-    goto bb0;
-
-bb0:
-    a = 37;
-    b = 23;
-    fp = &(p->x);
-    v = *fp;
-    x = Math_abs_diff(a, b);
-    return v;
-}
-)(3:loc12:test/dune:19)(4:memo((14:execute-action((6:digest(6:digest32:0062536fdcac8f334fcb9e6eeb1d3d4e))(3:loc((9:pos_fname9:test/dune)(5:start((8:pos_lnum2:19)(7:pos_bol3:414)(8:pos_cnum3:421)))(4:stop((8:pos_lnum2:19)(7:pos_bol3:414)(8:pos_cnum3:434)))))))(9:<unnamed>())(11:build-alias((3:dir(12:In_build_dir12:default/test))(4:name21:runtest-code_gen_test)))(9:<unnamed>())(11:build-alias((3:dir(12:In_build_dir12:default/test))(4:name7:runtest)))(8:toplevel())))(9:backtrace1671:Raised at Dune_engine__Process.Handle_exit_status.fail in file "dune_engine__Process.ml", lines 596-604, characters 4-24
-Called from Dune_engine__Process.run_internal.(fun) in file "dune_engine__Process.ml", lines 1141-1150, characters 10-66
-Called from Fiber__Core.O.(>>|).(fun) in file "fiber__Core.ml", line 258, characters 36-41
-Called from Fiber__Scheduler.exec in file "fiber__Scheduler.ml", line 77, characters 8-11
-Re-raised at Stdune__Exn.raise_with_backtrace in file "stdune__Exn.ml" (inlined), line 39, characters 27-56
-Called from Stdune__Exn_with_backtrace.reraise in file "stdune__Exn_with_backtrace.ml", line 21, characters 33-71
-Called from Fiber__Scheduler.exec in file "fiber__Scheduler.ml", line 77, characters 8-11
-Re-raised at Stdune__Exn.raise_with_backtrace in file "stdune__Exn.ml" (inlined), line 39, characters 27-56
-Called from Stdune__Exn_with_backtrace.reraise in file "stdune__Exn_with_backtrace.ml", line 21, characters 33-71
-Called from Fiber__Scheduler.exec in file "fiber__Scheduler.ml", line 77, characters 8-11
-Re-raised at Stdune__Exn.raise_with_backtrace in file "stdune__Exn.ml" (inlined), line 39, characters 27-56
-Called from Stdune__Exn_with_backtrace.reraise in file "stdune__Exn_with_backtrace.ml", line 21, characters 33-71
-Called from Fiber__Scheduler.exec in file "fiber__Scheduler.ml", line 77, characters 8-11
-Re-raised at Stdune__Exn.raise_with_backtrace in file "stdune__Exn.ml" (inlined), line 39, characters 27-56
-Called from Stdune__Exn_with_backtrace.reraise in file "stdune__Exn_with_backtrace.ml", line 21, characters 33-71
-Called from Fiber__Scheduler.exec in file "fiber__Scheduler.ml", line 77, characters 8-11
-))(7:process15:signal_received19:1780011408294208000(6:signal4:USR1))(10:persistent2:db(19:17800114083002430006:600000)(4:path17:_build/.digest-db)(6:module9:DIGEST-DB)(9:operation4:save))(10:persistent2:db(19:17800114083008840006:246000)(4:path10:_build/.db)(6:module14:INCREMENTAL-DB)(9:operation4:save))(6:config4:exit19:1780011408301150000(2:gc((10:stack_size1:0)(10:heap_words6:590405)(14:top_heap_words6:590405)(11:minor_words8:2359253.)(11:major_words7:515919.)(14:promoted_words7:482731.)(11:compactions1:0)(17:major_collections1:4)(17:minor_collections2:11)))(2:io((10:files_read((5:count2:34)(4:time7:2042000)(5:bytes4:4667)))(13:files_written((5:count1:7)(4:time1:0)(5:bytes2:39)))(16:directories_read((5:count1:1)(4:time1:0)))))(6:digest((5:files((5:count2:79)(4:time7:4562000)(5:bytes1:0)))(6:values((5:count3:407)(4:time6:261000)(5:bytes5:90884))))))
+)(6:rusage((13:user_cpu_time7:2859000)(15:system_cpu_time7:3620000)(6:maxrss7:3162112)(6:minflt3:266)(6:majflt2:16)(7:inblock1:0)(7:oublock1:0)(5:nvcsw1:0)(6:nivcsw1:3))))(6:action10:write-file(19:17801775015076290006:130000)(4:file83:_build/.actions/default/test/runtest-code_gen_test-0062536fdcac8f334fcb9e6eeb1d3d4e)(4:size1:0))(7:sandbox7:extract(19:17801775015077970004:2000)(3:loc12:test/dune:19)(3:dir48:_build/.sandbox/1f4eefa3d23294871a37c7e124cd0dc3))(6:thread12:spawn_thread19:1780177501507820000(4:name11:thread-pool))(7:sandbox7:destroy(19:17801775015079030007:1355000)(6:queued5:89000)(3:loc12:test/dune:19)(3:dir48:_build/.sandbox/1f4eefa3d23294871a37c7e124cd0dc3))(5:rules13:Alias builder(19:178017750038184100010:1127713000)(3:dir1:.))(7:process15:signal_received19:1780177501509776000(6:signal4:USR1))(10:persistent2:db(19:17801775015152180006:360000)(4:path17:_build/.digest-db)(6:module9:DIGEST-DB)(9:operation4:save))(10:persistent2:db(19:17801775015156210006:190000)(4:path10:_build/.db)(6:module14:INCREMENTAL-DB)(9:operation4:save))(6:config4:exit19:1780177501515823000(2:gc((10:stack_size1:0)(10:heap_words6:598745)(14:top_heap_words6:598745)(11:minor_words8:2359169.)(11:major_words7:531748.)(14:promoted_words7:498221.)(11:compactions1:0)(17:major_collections1:4)(17:minor_collections2:11)))(2:io((10:files_read((5:count2:36)(4:time7:2015000)(5:bytes4:4065)))(13:files_written((5:count1:8)(4:time1:0)(5:bytes2:39)))(16:directories_read((5:count1:1)(4:time1:0)))))(6:digest((5:files((5:count2:88)(4:time8:18787000)(5:bytes1:0)))(6:values((5:count3:435)(4:time6:279000)(5:bytes5:96947))))))

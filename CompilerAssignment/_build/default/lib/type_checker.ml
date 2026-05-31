@@ -1,16 +1,35 @@
 open Parser
 
-type environment = {
-  extern_types : (path * field list) list; (* struct name -> list of strings and types *)
-  locals       : param list;               (* "%x" -> type *)
-  labels       : label list;               (* list of valid block names "bb0", "bb1", ... *)
-  funct        : funct;                    (* track the function being checked *)
+type signature = {
+  args : resir_type list;
+  ret  : ret_type;
 }
+
+type environment = {
+  extern_types     : (path * field list) list; (* struct name -> list of strings and types *)
+  locals           : param list;               (* "%x" -> type *)
+  labels           : label list;               (* list of valid block names "bb0", "bb1", ... *)
+  funct            : funct;                    (* track the function being checked *)
+  extern_functions : (path * signature) list;        (* list of function paths and signatures that are already defined to type check *)
+}
+
+let rec check_type_exists ext_types ret_typ =
+  match ret_typ with
+  | Void -> ()
+  | RetType typ -> (
+    match typ with
+    | Prim _ -> ()
+    | Ptr inner_typ ->
+      check_type_exists ext_types (RetType inner_typ)
+    | Path p ->
+      if not (List.mem_assoc p ext_types) then
+        failwith (Printf.sprintf "Semantic Error: Unknown custom type \"%s\" used." (string_of_path p)) )
 
 let build_environment program =
   (* populate extern types *)
   let get_extern_types =
     List.map (fun (ext : extern_type) -> (ext.path, ext.fields)) program.externs in
+  let ext_types = get_extern_types in
 
   (* check for duplicate externs *)
   let extern_paths = List.map fst get_extern_types in
@@ -34,13 +53,27 @@ let build_environment program =
   (* check if entry actually exists *)
   if not (List.mem program.funct.entry labels_list) then (
     let Label entry_str = program.funct.entry in
-    failwith (Printf.sprintf "Semantic Error: Declared entry block \"%s\" does not exist." entry_str));
+    failwith (Printf.sprintf "Semantic Error: Declared entry block %s does not exist." entry_str));
+
+  (* check if all custom types were declared, first in each extern, then return type, then locals *)
+  List.iter (fun (ext : extern_type) -> 
+    List.iter (fun (_, typ) -> check_type_exists ext_types (RetType typ)) ext.fields) program.externs;
+
+  check_type_exists ext_types program.funct.ret_type;
+
+  List.iter (fun (_, typ) -> check_type_exists ext_types (RetType typ)) all_locals;
+
+  (* hardcode known functions *)
+  let known_externs = [
+    (["Math"; "abs_diff"], {args = [Prim I32; Prim I32]; ret = RetType (Prim I32)})
+  ] in
 
   {
-    extern_types = get_extern_types;
+    extern_types = ext_types;
     locals = all_locals;
     labels = labels_list;
     funct = program.funct;
+    extern_functions = known_externs;
   }
 
 let search_local env local =
@@ -48,7 +81,7 @@ let search_local env local =
     List.assoc local env.locals (* search for the associated resir_type *)
   with Not_found ->
     let (Local name) = local in
-      failwith (Printf.sprintf "Semantic Error: Use of undeclared variable \"%s\"." name)
+      failwith (Printf.sprintf "Semantic Error: Use of undeclared variable %s." name)
 
 let search_extern env path =
   try
@@ -76,15 +109,15 @@ let is_valid_dest env dest rhs_type =
   | Some dest_local, Some rhs_type ->
     let dest_type = search_local env dest_local in
     if dest_type <> rhs_type then
-      failwith (Printf.sprintf "Semantic Error: Type mismatch. Cannot assign type \"%s\" to variable \"%s\" of type \"%s\"." (string_of_resir_type rhs_type) (string_of_local dest_local) (string_of_resir_type dest_type))
+      failwith (Printf.sprintf "Semantic Error: Type mismatch. Cannot assign type %s to variable %s of type %s." (string_of_resir_type rhs_type) (string_of_local dest_local) (string_of_resir_type dest_type))
 
   | None, _ -> () (* void operation with no destination or discarding a produced value *)
 
   | Some dest_local, None ->
-    failwith (Printf.sprintf "Semantic Error: Cannot assign a void expression to variable \"%s\"." (string_of_local dest_local))
+    failwith (Printf.sprintf "Semantic Error: Cannot assign a void expression to variable %s." (string_of_local dest_local))
 
   (* | None, Some rhs_type ->
-    failwith (Printf.sprintf "Semantic Error: Expression produces a value of type \"%s\" but no destination variable was provided." (string_of_resir_type rhs_type)) *)
+    failwith (Printf.sprintf "Semantic Error: Expression produces a value of type %s but no destination variable was provided." (string_of_resir_type rhs_type)) *)
 
 let get_rhs_type env expr =
   match expr with
@@ -94,7 +127,7 @@ let get_rhs_type env expr =
   | RhsCast (local, target_type) ->
     let src_type = search_local env local in
       if is_valid_cast src_type target_type then Some target_type
-      else failwith (Printf.sprintf "Semantic Error: Invalid type cast. \"%s\" cannot be cast to \"%s\"." (string_of_resir_type src_type) (string_of_resir_type target_type))
+      else failwith (Printf.sprintf "Semantic Error: Invalid type cast. %s cannot be cast to %s." (string_of_resir_type src_type) (string_of_resir_type target_type))
 
   | RhsUn (op, local) ->
     let typ = search_local env local in (
@@ -105,12 +138,12 @@ let get_rhs_type env expr =
     
     | Not, Prim Bool -> Some typ
     | Not, Prim t ->
-      failwith (Printf.sprintf "Semantic Error: Cannot apply Not to local of type \"%s\". Did you mean 'neg'?" (string_of_prim_type t))
+      failwith (Printf.sprintf "Semantic Error: Cannot apply Not to local of type %s. Did you mean 'neg'?" (string_of_prim_type t))
     
     | op, Path p ->
-      failwith (Printf.sprintf "Semantic Error: Cannot apply %s to custom type \"%s\"." (string_of_unop op) (string_of_path p))
+      failwith (Printf.sprintf "Semantic Error: Cannot apply %s to custom type %s." (string_of_unop op) (string_of_path p))
     | op, Ptr p ->
-      failwith (Printf.sprintf "Semantic Error: Cannot apply %s to pointer \"%s\"." (string_of_unop op) (string_of_resir_type p)) )
+      failwith (Printf.sprintf "Semantic Error: Cannot apply %s to pointer %s." (string_of_unop op) (string_of_resir_type p)) )
 
   | RhsBin (op, local1, local2) -> (
     let typ1 = search_local env local1 in
@@ -145,13 +178,13 @@ let get_rhs_type env expr =
       (* logical operators for boolean only *)
       | (And | Or), Prim Bool -> Some (Prim Bool)
       | (And | Or), Prim p -> 
-        failwith (Printf.sprintf "Semantic Error: Cannot apply %s to local of type \"%s\"." (string_of_binop op) (string_of_prim_type p))
+        failwith (Printf.sprintf "Semantic Error: Cannot apply %s to local of type %s." (string_of_binop op) (string_of_prim_type p))
 
       (* errors on paths and pointers *)
       | op, Path p ->
-        failwith (Printf.sprintf "Semantic Error: Cannot apply %s to custom type \"%s\"." (string_of_binop op) (string_of_path p))
+        failwith (Printf.sprintf "Semantic Error: Cannot apply %s to custom type %s." (string_of_binop op) (string_of_path p))
       | op, Ptr p ->
-        failwith (Printf.sprintf "Semantic Error: Cannot apply %s to pointer \"%s\". Only equality checks are allowed." (string_of_binop op) (string_of_resir_type p)) ) )
+        failwith (Printf.sprintf "Semantic Error: Cannot apply %s to pointer %s. Only equality checks are allowed." (string_of_binop op) (string_of_resir_type p)) ) )
 
   | RhsAddrOf local ->
     Some (Ptr (search_local env local))
@@ -187,7 +220,7 @@ let check_term env term =
   match term with
   | Jump target_label ->
     if not (List.mem target_label env.labels) then
-      failwith (Printf.sprintf "Semantic Error: Target of jump \"%s\" does not exist." (string_of_label target_label))
+      failwith (Printf.sprintf "Semantic Error: Target of jump %s\" does not exist." (string_of_label target_label))
   
   | Cjump (condition, label_true, label_false) ->
     if (search_local env condition) <> Prim Bool then
@@ -205,11 +238,11 @@ let check_term env term =
     | RetType expected_type, Some ret_local ->
         let actual_type = search_local env ret_local in
         if actual_type <> expected_type then
-          failwith (Printf.sprintf "Semantic Error: Return type mismatch. Expected \"%s\" but found \"%s\"." (string_of_resir_type expected_type) (string_of_resir_type actual_type))
+          failwith (Printf.sprintf "Semantic Error: Return type mismatch. Expected %s but found %s." (string_of_resir_type expected_type) (string_of_resir_type actual_type))
     | Void, Some _ ->
       failwith "Semantic Error: Void functions cannot return a value."
     | RetType t, None ->
-      failwith (Printf.sprintf "Semantic Error: Function must return a value of type \"%s\"." (string_of_resir_type t))
+      failwith (Printf.sprintf "Semantic Error: Function must return a value of type %s." (string_of_resir_type t))
 
 let check_statement env stmt =
   match stmt.dest, stmt.rhs with
@@ -221,31 +254,39 @@ let check_statement env stmt =
     | IntLit _, Prim (I32 | I64 | U32) -> ()
     | FloatLit _, Prim F64 -> ()
     | NullLit, Ptr _ -> ()
-    | _ -> failwith (Printf.sprintf "Semantic Error: Constant literal \"%s\" does not match destination type \"%s\"." (string_of_literal lit) (string_of_resir_type dest_type))
+    | _ -> failwith (Printf.sprintf "Semantic Error: Constant literal \"%s\" does not match destination type %s." (string_of_literal lit) (string_of_resir_type dest_type))
     )
   
   | None, RhsConst lit -> 
     failwith (Printf.sprintf "Semantic Error: Constant literal \"%s\" cannot exist without a destination variable." (string_of_literal lit))
 
   | dest_opt, RhsCall (funct_path, args) ->
-      if funct_path = env.funct.path then
-        (* recursive call *)
-        let arg_types = List.map (search_local env) args in
-        let param_types = List.map snd env.funct.params in
+      let sig_opt =
+        if funct_path = env.funct.path then
+          (* recursive call signature *)
+          Some {args = List.map snd env.funct.params; ret = env.funct.ret_type}
 
-        if List.length arg_types <> List.length param_types then
-          failwith (Printf.sprintf "Semantic Error: Arity mismatch in recursive call to \"%s\"." (string_of_path funct_path));
+        else
+          (* lookup external function *)
+          List.assoc_opt funct_path env.extern_functions
+      in
+      (match sig_opt with
+      (* found matching signature, either recursive or pre-existing, so compare signature with vars passed to it *)
+      | Some callee_sig ->
+          let arg_types = List.map (search_local env) args in
 
-        if arg_types <> param_types then
-          failwith (Printf.sprintf "Semantic Error: Argument type mismatch in recursive call to \"%s\"." (string_of_path funct_path));
+          if List.length arg_types <> List.length callee_sig.args then
+            failwith (Printf.sprintf "Semantic Error: Arity mismatch in call to \"%s\"." (string_of_path funct_path));
 
-        let rhs_type_opt = match env.funct.ret_type with Void -> None | RetType t -> Some t in
-        is_valid_dest env dest_opt rhs_type_opt
+          if arg_types <> callee_sig.args then
+            failwith (Printf.sprintf "Semantic Error: Argument type mismatch in call to \"%s\"." (string_of_path funct_path));
 
-      else (
-        (* call to a defined function, first checking that args exist, then checking that dest_local exists *)
+          let rhs_type_opt = match callee_sig.ret with Void -> None | RetType t -> Some t in
+          is_valid_dest env dest_opt rhs_type_opt
+
+      | None ->
+        (* call to an undefined function, first checking that args exist, then checking that dest_local exists *)
         List.iter (fun arg -> ignore (search_local env arg)) args;
-
         match dest_opt with 
         | Some dest_local -> ignore (search_local env dest_local)
         | None -> ()  )

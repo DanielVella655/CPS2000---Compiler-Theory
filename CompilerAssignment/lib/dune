@@ -1,4 +1,4 @@
 (library
  (name CompilerAssignment)
  (public_name CompilerAssignment)
- (modules lexer parser type_checker code_generator))
+ (modules lexer parser type_checker code_generator optimiser))

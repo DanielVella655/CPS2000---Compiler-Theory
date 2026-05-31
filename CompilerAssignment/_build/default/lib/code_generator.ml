@@ -108,13 +108,22 @@ let gen_term term =
 
 let gen_block block =
   (* build label blocks *)
-  let stmts_str = String.concat "\n" (List.map gen_stmt block.stmts) in
-    Printf.sprintf "%s:\n%s\n%s" (gen_label block.label) (stmts_str) (gen_term block.term)
+  if block.stmts <> [] then
+    let stmts_str = String.concat "\n" (List.map gen_stmt block.stmts) in
+      Printf.sprintf "%s:\n%s\n%s" (gen_label block.label) (stmts_str) (gen_term block.term)
+    else
+      Printf.sprintf "%s:\n%s" (gen_label block.label) (gen_term block.term)
 
 let gen_param param =
   (* join local to its type *)
   let (loc, typ) = param in
     Printf.sprintf "%s %s" (gen_type typ) (gen_local loc)
+
+let gen_params params =
+  (* void if none to avoid an unspecified number of params *)
+  match params with
+  | [] -> "void"
+  | _ -> String.concat ", " (List.map gen_param params)
 
 let gen_ret_type ret_type =
   (* type including void *)
@@ -122,33 +131,37 @@ let gen_ret_type ret_type =
   | Void -> "void"
   | RetType typ -> gen_type typ
 
-let gen_extern extern =
-  (* group vars then build it as a struct *)
-  let grouped_line (typ, names) =
-    let names_str = String.concat ", " names in 
-      Printf.sprintf "    %s %s;" (gen_type typ) (names_str)
-  in
-  let fields_str = String.concat "\n" (List.map grouped_line (group_by_type extern.fields)) in
-    Printf.sprintf "typedef struct %s {\n%s\n} %s;" (gen_path extern.path) (fields_str) (gen_path extern.path) 
-
 let gen_funct (funct : funct) =
+  (* collect stars for nested pointers *)
+  let rec add_ptr_stars typ =
+    match typ with
+    | Ptr inner_typ ->
+      let (base, stars) = add_ptr_stars inner_typ in
+        (base, stars ^ "*")
+    | _ ->
+      (gen_type typ, "")
+  in
+
   (* group locals then build label blocks *)
   let grouped_line (typ, locals) =
-    let names_str = String.concat ", " (List.map gen_local locals) in 
-      Printf.sprintf "    %s %s;" (gen_type typ) (names_str)
+    let (base_type, stars) = add_ptr_stars typ in
+    let names_str = String.concat ", " (List.map (fun (local) -> (stars ^ gen_local local)) locals) in 
+      Printf.sprintf "    %s %s;" (base_type) (names_str)
   in
   let locals_str = String.concat "\n" (List.map grouped_line (group_by_type funct.locals)) in
-  Printf.sprintf "%s %s(%s) {\n%s\n    goto %s;\n\n%s\n}" (gen_ret_type funct.ret_type) (gen_path funct.path)
-    (String.concat ", " (List.map gen_param funct.params)) (locals_str) (gen_label funct.entry)
-    (String.concat "\n\n" (List.map gen_block funct.blocks))
 
-let gen_program program =
+  if funct.locals <> [] then
+    Printf.sprintf "%s %s(%s) {\n%s\n    goto %s;\n\n%s\n}" (gen_ret_type funct.ret_type) (gen_path funct.path)
+      (gen_params funct.params) (locals_str) (gen_label funct.entry)
+      (String.concat "\n\n" (List.map gen_block funct.blocks))
+  
+  else
+    Printf.sprintf "%s %s(%s) {\n    goto %s;\n\n%s\n}" (gen_ret_type funct.ret_type) (gen_path funct.path)
+      (gen_params funct.params) (gen_label funct.entry)
+      (String.concat "\n\n" (List.map gen_block funct.blocks))
+
+let gen_program (program : program * 'a) =
   (* add headers for ints, bool, and NULL *)
   let (stripped_program, _) = program in
-  let externs_str = (
-    if stripped_program.externs <> [] then 
-      "\n\n" ^ String.concat "\n\n" (List.map gen_extern stripped_program.externs)
-    else
-      "" ) in
-    Printf.sprintf "#include <stdint.h>\n#include <stdbool.h>\n#include <stddef.h>%s\n\n%s" 
-    (externs_str) (gen_funct stripped_program.funct)
+    Printf.sprintf "#include <stdint.h>\n#include <stdbool.h>\n#include <stddef.h>\n#include \"extern_types.h\"\n\n%s" 
+    (gen_funct stripped_program.funct)

@@ -1,1 +1,1 @@
-Semantic Error: Return type mismatch. Expected "i32" but found "f64".
+Semantic Error: Return type mismatch. Expected i32 but found f64.

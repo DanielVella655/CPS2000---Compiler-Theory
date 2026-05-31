@@ -66,7 +66,7 @@ let run_error_test_case resir_path expected_path =
 let () =
   print_endline "Running ResIR Code Generator Test Suite...";
   
-  for x = 1 to 2 do (run_test_case ("test/test_cases/code_gen_tests/test" ^ string_of_int x ^ ".resir") ("test/test_cases/code_gen_tests/test" ^ string_of_int x ^ ".expected")) done;
+  for x = 1 to 4 do (run_test_case ("test/test_cases/code_gen_tests/test" ^ string_of_int x ^ ".resir") ("test/test_cases/code_gen_tests/test" ^ string_of_int x ^ ".expected")) done;
   (* for x = 3 to 6 do (run_error_test_case ("test/test_cases/parser_tests/test" ^ string_of_int x ^ "_err.resir") ("test/test_cases/parser_tests/test" ^ string_of_int x ^ "_err.expected")) done; *)
   
   print_endline "All tests passed successfully!\n"

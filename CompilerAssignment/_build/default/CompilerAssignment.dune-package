@@ -18,6 +18,9 @@
    compilerAssignment__Lexer.cmi
    compilerAssignment__Lexer.cmt
    compilerAssignment__Lexer.cmx
+   compilerAssignment__Optimiser.cmi
+   compilerAssignment__Optimiser.cmt
+   compilerAssignment__Optimiser.cmx
    compilerAssignment__Parser.cmi
    compilerAssignment__Parser.cmt
    compilerAssignment__Parser.cmx
@@ -27,6 +30,7 @@
    dune-package
    lexer.ml
    opam
+   optimiser.ml
    parser.ml
    type_checker.ml))
  (libexec (CompilerAssignment.cmxs))
@@ -59,6 +63,10 @@
       (obj_name compilerAssignment__Lexer)
       (visibility public)
       (source (path Lexer) (impl (path lexer.ml))))
+     (module
+      (obj_name compilerAssignment__Optimiser)
+      (visibility public)
+      (source (path Optimiser) (impl (path optimiser.ml))))
      (module
       (obj_name compilerAssignment__Parser)
       (visibility public)
