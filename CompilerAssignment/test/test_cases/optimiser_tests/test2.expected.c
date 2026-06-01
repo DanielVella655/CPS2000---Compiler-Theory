@@ -4,6 +4,7 @@
 #include "extern_types.h"
 
 void Test_move_point(Custom_Struct_Point* p, int32_t dx, int32_t dy) {
+    (void)p, (void)dx, (void)dy;
     int32_t *xptr, *yptr, *copy_ptr;
     bool *vptr;
     Custom_Struct_Point **nptr;

@@ -142,7 +142,7 @@ let gen_funct (funct : funct) =
       (gen_type typ, "")
   in
 
-  (* group locals then build label blocks *)
+  (* group locals *)
   let grouped_line (typ, locals) =
     let (base_type, stars) = add_ptr_stars typ in
     let names_str = String.concat ", " (List.map (fun (local) -> (stars ^ gen_local local)) locals) in 
@@ -150,14 +150,23 @@ let gen_funct (funct : funct) =
   in
   let locals_str = String.concat "\n" (List.map grouped_line (group_by_type funct.locals)) in
 
+  (* generate void casts to silence unused warnings after DCE *)
+  let param_silencers = 
+    match funct.params with
+    | [] -> ""
+    | _ ->
+      let param_casts = List.map (fun (loc, _) -> Printf.sprintf "(void)%s" (gen_local loc)) funct.params in
+      Printf.sprintf "    %s;\n" (String.concat ", " param_casts)
+  in
+
   if funct.locals <> [] then
-    Printf.sprintf "%s %s(%s) {\n%s\n    goto %s;\n\n%s\n}" (gen_ret_type funct.ret_type) (gen_path funct.path)
-      (gen_params funct.params) (locals_str) (gen_label funct.entry)
+    Printf.sprintf "%s %s(%s) {\n%s%s\n    goto %s;\n\n%s\n}\n" (gen_ret_type funct.ret_type) (gen_path funct.path)
+      (gen_params funct.params) (param_silencers) (locals_str) (gen_label funct.entry)
       (String.concat "\n\n" (List.map gen_block funct.blocks))
   
   else
-    Printf.sprintf "%s %s(%s) {\n    goto %s;\n\n%s\n}" (gen_ret_type funct.ret_type) (gen_path funct.path)
-      (gen_params funct.params) (gen_label funct.entry)
+    Printf.sprintf "%s %s(%s) {\n%s    goto %s;\n\n%s\n}\n" (gen_ret_type funct.ret_type) (gen_path funct.path)
+      (gen_params funct.params) (param_silencers) (gen_label funct.entry)
       (String.concat "\n\n" (List.map gen_block funct.blocks))
 
 let gen_program (program : program * 'a) =

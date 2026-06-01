@@ -50,4 +50,4 @@ let () =
   
   for x = 1 to 6 do (run_error_test_case ("test/test_cases/type_check_tests/test" ^ string_of_int x ^ "_err.resir") ("test/test_cases/type_check_tests/test" ^ string_of_int x ^ "_err.expected")) done;
   
-  print_endline "All tests passed successfully!"
+  print_endline "All tests passed successfully!\n"

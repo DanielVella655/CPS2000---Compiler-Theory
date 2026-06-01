@@ -20,3 +20,9 @@
  (libraries CompilerAssignment)
  (deps (glob_files_rec test_cases/code_gen_tests/*)
        (alias runtest-type_check_test)))
+
+(test
+ (name optimiser_test)
+ (libraries CompilerAssignment)
+ (deps (glob_files_rec test_cases/optimiser_tests/*)
+       (alias runtest-code_gen_test)))
