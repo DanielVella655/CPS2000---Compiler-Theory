@@ -175,7 +175,7 @@ let optimise_block block live_out =
       let is_dead =
         match stmt.dest with
         | Some loc -> not (StringSet.mem (string_of_local loc) current_live)
-        | None -> false
+        | None -> true
       in
 
       if is_dead && safe_delete stmt.rhs then

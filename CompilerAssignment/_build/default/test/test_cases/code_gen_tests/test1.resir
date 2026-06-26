@@ -50,7 +50,8 @@ function Test::int_bool_control(%a: i32, %b: i32, %flag: bool) -> i32 {
     %flag_mix = bin or %both, %notflag;
     %final_cond = bin or %or1, %cmp_any;
     cjump %final_cond, bb1, bb2;
-    bb1:
+  
+  bb1:
     %chosen = %neg;
     jump bb3;
 

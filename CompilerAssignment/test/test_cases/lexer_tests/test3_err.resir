@@ -1,4 +1,4 @@
-function i32 math_diff() {
+function math_diff() -> i32 {
   bb0:
     %a = const +32;
     %b = const -10;

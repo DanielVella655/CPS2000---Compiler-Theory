@@ -1,4 +1,4 @@
-//for test 1
+//for test 2
 typedef struct Custom_Struct_Point {
     int32_t x, y;
     bool valid;

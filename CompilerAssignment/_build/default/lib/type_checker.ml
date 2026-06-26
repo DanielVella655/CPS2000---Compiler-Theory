@@ -126,6 +126,7 @@ let get_rhs_type env expr =
 
   | RhsCast (local, target_type) ->
     let src_type = search_local env local in
+    check_type_exists env.extern_types (RetType target_type);
       if is_valid_cast src_type target_type then Some target_type
       else failwith (Printf.sprintf "Semantic Error: Invalid type cast. %s cannot be cast to %s." (string_of_resir_type src_type) (string_of_resir_type target_type))
 
@@ -220,7 +221,7 @@ let check_term env term =
   match term with
   | Jump target_label ->
     if not (List.mem target_label env.labels) then
-      failwith (Printf.sprintf "Semantic Error: Target of jump %s\" does not exist." (string_of_label target_label))
+      failwith (Printf.sprintf "Semantic Error: Target of jump \"%s\" does not exist." (string_of_label target_label))
   
   | Cjump (condition, label_true, label_false) ->
     if (search_local env condition) <> Prim Bool then

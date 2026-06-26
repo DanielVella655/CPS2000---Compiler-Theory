@@ -1,1 +1,1 @@
-lib/code_generator.ml: List Parser Printf String Type_checker
+lib/code_generator.ml: Lexer List Optimiser Parser Printf String Type_checker

@@ -1,8 +1,8 @@
 open Lexer
 
 (* Basic Components and Identifiers *)
-type path = string list   (* ["Custom"; "Struct"; "Point"]*)
-type local = Local of string       (* "%var"*)
+type path = string list   (* ["Custom"; "Struct"; "Point"] *)
+type local = Local of string       (* "%var" *)
 type label = Label of string       (* "bb0" *)
 
 type prim_type = | Bool | I32 | I64 | U32 | F64
@@ -467,7 +467,9 @@ match tokens with
       | (Lexer.Comma, _, _) :: loop_tokens1 ->
           let (new_param, loop_tokens2) = parse_param loop_tokens1 in
             params_loop (new_param :: acc) loop_tokens2
+            
       | _ -> (List.rev acc, loop_tokens)
+
     in params_loop [first_param] rest1
 
 let parse_rettype tokens = 

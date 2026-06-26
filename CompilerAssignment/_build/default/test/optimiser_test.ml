@@ -1,4 +1,5 @@
 open CompilerAssignment
+open Code_generator
 open Optimiser
 
 (* resolving path to avoid errors between dune exec and dune test*)
@@ -30,11 +31,7 @@ let run_test_case resir_path expected_path =
   (* round trip testing *)
   let input_code = read_file resir_path in
   let expected_output = String.trim (read_file expected_path) in
-  let tokens = Lexer.tokenize input_code in
-  let program = Parser.parse_program tokens in
-    Type_checker.validate_program program;
-    let optimised_program = optimise_program program in
-    let c_code = String.trim (Code_generator.gen_program optimised_program) in
+  let c_code = gen_program_opt input_code in
 
       if c_code = expected_output then (
         Printf.printf "  [PASS] %s matches expected output.\n" resir_path;

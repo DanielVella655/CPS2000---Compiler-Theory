@@ -1,5 +1,6 @@
 open Parser
 open Type_checker
+open Optimiser
 
 (* helper functions that groups variables of same type, used for fields and locals *)
 let group_by_type vars =
@@ -120,7 +121,7 @@ let gen_param param =
     Printf.sprintf "%s %s" (gen_type typ) (gen_local loc)
 
 let gen_params params =
-  (* void if none to avoid an unspecified number of params *)
+  (* void for empty parameter lists to be explicit *)
   match params with
   | [] -> "void"
   | _ -> String.concat ", " (List.map gen_param params)
@@ -174,3 +175,10 @@ let gen_program (program : program * 'a) =
   let (stripped_program, _) = program in
     Printf.sprintf "#include <stdint.h>\n#include <stdbool.h>\n#include <stddef.h>\n#include \"extern_types.h\"\n\n%s" 
     (gen_funct stripped_program.funct)
+
+let gen_program_opt source_code =
+  let tokens = Lexer.tokenize source_code in
+  let program = Parser.parse_program tokens in
+    Type_checker.validate_program program;
+    let optimised_program = optimise_program program in
+    String.trim (gen_program optimised_program)
