@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.27)  26 JUN 2026 12:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.27)  26 JUN 2026 17:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -597,12 +597,12 @@ Overfull \hbox (25.13031pt too wide) in paragraph at lines 950--954
 [14] [15]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 1097.
- [16{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}] [17] [18] [19]
-Overfull \hbox (65.85002pt too wide) in paragraph at lines 1397--1407
+ [16{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}] [17] [18] [19] [20]
+Overfull \hbox (65.85002pt too wide) in paragraph at lines 1436--1446
  [][] 
  []
 
-[20] [21] (./Report.aux)
+[21] [22] (./Report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -613,18 +613,18 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 20402 strings out of 467525
- 401093 string characters out of 5418982
+ 20434 strings out of 467525
+ 401421 string characters out of 5418982
  1069663 words of memory out of 5000000
- 48859 multiletter control sequences out of 15000+600000
- 692586 words of font info for 146 fonts, out of 8000000 for 9000
+ 48889 multiletter control sequences out of 15000+600000
+ 692669 words of font info for 147 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,12n,107p,1074b,1717s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmri9.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/lm/lmtt9.pfb>
-Output written on Report.pdf (21 pages, 392465 bytes).
+Output written on Report.pdf (22 pages, 394647 bytes).
 PDF statistics:
- 175 PDF objects out of 1000 (max. 8388607)
- 113 compressed objects within 2 object streams
+ 178 PDF objects out of 1000 (max. 8388607)
+ 115 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  38413 words of extra memory for PDF output out of 42996 (max. 10000000)
 

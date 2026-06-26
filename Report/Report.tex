@@ -1172,9 +1172,10 @@ let compute_liveness blocks =
 
 Once these liveness sets are computed for each block, the Dead Code Elimination is handled in the \texttt{optimise\_block} function,
 which performs a bottom-up traversal of each statement in the block, and saves variables in its $LiveOut$ set, starting from the terminator.
-If an assignment is found with a destination that is not currently live, then that means that this assignment is unused. However this is not the 
+If an assignment is found with a destination that is not currently live, then that means that this assignment is unused. Also, destination-less
+statements are treated as dead by default, but \texttt{safe\_delete} protects them from erroneous deletion. However this is not the 
 only condition for removal of that statement, because some operations, like \texttt{store} operations, may have an effect on the memory state 
-outside the currently running program. This is checked by the \texttt{safe\_delete} function, and if a statement is deemed to be safe to delete and dead
+outside the currently running program. This is checked by the aforementioned \texttt{safe\_delete} function, and if a statement is deemed to be safe to delete and dead
 then it is dropped and the walk moves to the next statement above it. Otherwise the statement destination is removed from the live set, 
 and its uses are added instead, with the statement being saved.
 
@@ -1200,7 +1201,7 @@ let optimise_block block live_out =
       let is_dead =
         match stmt.dest with
         | Some loc -> not (StringSet.mem (string_of_local loc) current_live)
-        | None -> false
+        | None -> true
       in
 
       if is_dead && safe_delete stmt.rhs then
@@ -1301,7 +1302,45 @@ bb3:
 }
 \end{lstlisting}
 
-\break
+\medskip
+
+So for the above code a sample of the facts derived from its CFG are:
+
+\begin{lstlisting}
+edge(bb0, bb1).
+edge(bb0, bb2).
+edge(bb1, bb3).
+edge(bb2, bb3).
+
+def(s_bb0_0, %one).
+def(s_bb0_1, %sum).
+def(s_bb0_2, %diff).
+...
+
+use(s_bb0_1, %a).
+use(s_bb0_1, %b).
+use(term_bb0, %final_cond).
+\end{lstlisting}
+
+\medskip
+
+And the following liveness rules are implemented on them by the \texttt{worklist\_loop} sub-function, which computes
+the same fixpoint via backward dataflow iteration over the CFG.
+\begin{lstlisting}
+live_in(B, X)  :- gen(B, X).
+live_in(B, X)  :- live_out(B, X), not kill(B, X).
+live_out(B, X) :- edge(B, S), live_in(S, X).
+dead_assign(B, X) :- def_in_block(B, X), not live_out(B, X).
+\end{lstlisting}
+
+So the derived \texttt{dead} facts that were used to drop the corresponding assignment statements for \texttt{notflag}
+and \texttt{flag\_mix} (and as a result unrefenced) are:
+\begin{lstlisting}
+dead_assign(bb0, %notflag).
+dead_assign(bb0, %flag_mix).
+\end{lstlisting}
+
+\bigskip
 
 \section{Testing Suite}
 The test suite consists of 5 \texttt{.ml} files, one for each task described above, and 4-6 test cases for each. 
@@ -1407,9 +1446,7 @@ for what each test is testing for:
     \caption{optimiser\_tests}
 \end{table}
 
-
-
-
+\bigskip
 
 \section{Limitations and Future Improvements}
 
