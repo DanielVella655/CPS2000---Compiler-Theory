@@ -1,8 +1,0 @@
-function Test::minimal_empty_void() -> void {
-  locals {
-  }
-  entry bb0;
-
-  bb0:
-    return;
-}

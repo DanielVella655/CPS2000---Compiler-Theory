@@ -1,7 +1,0 @@
-function Contract::wrong_return(%val: f64) -> i32 {
-  locals {}
-  entry bb2;
-
-  bb2:
-    return %val;
-}

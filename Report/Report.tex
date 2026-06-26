@@ -1311,7 +1311,8 @@ Additionally, \texttt{optimiser\_test.ml} also compiles the code using the requi
 
 \medskip
 
-The automated test suite can be run with \texttt{dune test}, and alternatively if one wishes to compile any ResIR code,
+The automated test suite can be run with \texttt{dune test}, after building the project using \texttt{dune build},
+and alternatively if one wishes to compile any ResIR code,
 I have also prepared the \texttt{main.ml} file in \texttt{bin} to attempt to generate compilable C code for any 
 input ResIR file, by running the following command: \texttt{dune exec ./bin/main.exe -- <file\_path>}. Below are brief descriptions
 for what each test is testing for:

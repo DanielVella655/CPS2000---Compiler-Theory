@@ -1,9 +1,0 @@
-function y_true() -> void {
-  locals {
-    %y : bool;
-  }
-  entry bb0;
-
-  bb0:
-    %y = const true;
-}
