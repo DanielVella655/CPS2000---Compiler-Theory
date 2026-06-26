@@ -20,6 +20,8 @@ function Test::move_point(%p: ptr<Custom::Struct::Point>, %dx: i32, %dy: i32) ->
     %is_root : bool;
     %local_copy : i32;
     %copy_ptr : ptr<i32>;
+    %calc1 : i32;
+    %calc2 : i32;
   }
   entry bb0;
   
@@ -32,8 +34,10 @@ function Test::move_point(%p: ptr<Custom::Struct::Point>, %dx: i32, %dy: i32) ->
     %nptr = member_ptr %p, next;
     %x = load %xptr;
     %y = load %yptr;
+    %calc1 = bin mul %dx, %dy;
     %newx = bin add %x, %dx;
     %newy = bin add %y, %dy;
+    %calc2 = bin sub %newx, %calc1;
     store %xptr, %newx;
     store %yptr, %newy;
     %ok = const true;

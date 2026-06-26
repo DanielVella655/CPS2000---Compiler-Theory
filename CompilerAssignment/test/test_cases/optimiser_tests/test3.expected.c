@@ -16,6 +16,7 @@ bb0:
     wide = (int64_t)i;
     u = 42;
     fromu = (int64_t)u;
+    Runtime_zero_i32();
     f = 3.5;
     negf = -f;
     sumf = f + negf;

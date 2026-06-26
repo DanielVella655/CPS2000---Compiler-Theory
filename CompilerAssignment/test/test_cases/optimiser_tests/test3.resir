@@ -17,6 +17,8 @@ function Test::calls_casts_numeric() -> i64 {
     %tmp : i64;
     %ok : bool;
     %ret : i64;
+    %calc1 : i64;
+    %calc2 : i64;
   }
   entry bb0;
 
@@ -25,6 +27,9 @@ function Test::calls_casts_numeric() -> i64 {
     %wide = cast %i to i64;
     %u = const 42;
     %fromu = cast %u to i64;
+    %calc1 = cast %u to i64;
+    %calc2 = bin mul %wide, %calc1;
+    call Runtime::zero_i32();
     %f = const 3.5;
     %negf = un neg %f;
     %sumf = bin add %f, %negf;

@@ -41,19 +41,19 @@ let rec gen_type resir_type =
   | Ptr t     -> gen_type t ^ "*"
 
 let gen_literal literal =
-  (* map literals to C99 literals (only NULL is different) *)
+  (* map literals to C11 literals (only NULL is different) *)
   match literal with
   | NullLit -> "NULL"
   | _       -> string_of_literal literal
 
 let gen_unop unop =
-  (* matching to C99 operators *)
+  (* matching to C11 operators *)
   match unop with
   | Neg -> "-"
   | Not -> "!"
 
 let gen_binop binop =
-  (* matching to C99 operators *)
+  (* matching to C11 operators *)
   match binop with
   | Add -> "+"  | Sub -> "-"  | Mul -> "*" | Div -> "/"  | Mod -> "%" 
 
@@ -62,7 +62,7 @@ let gen_binop binop =
   | And -> "&&" | Or  -> "||"
 
 let gen_rhs rhs =
-  (* match RHS to C99 equivalent *)
+  (* match RHS to C11 equivalent *)
   match rhs with
   | RhsLocal loc            -> gen_local loc
   | RhsConst lit            -> gen_literal lit
